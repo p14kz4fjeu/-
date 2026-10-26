@@ -1,0 +1,27 @@
+name: 每日政策抓取
+
+on:
+  schedule:
+    # 每天凌晨3点（北京时间）自动跑一次
+    - cron: '0 19 * *'
+  workflow_dispatch:  # 允许手动点击运行
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+      - name: 运行爬虫
+        run: python spider.py
+      - name: 提交更新
+        run: |
+          git config --local user.email "bot@policy.local"
+          git config --local user.name "policy-bot"
+          git add policies.json
+          git diff --staged --quiet || git commit -m "自动更新政策数据 $(date '+%Y-%m-%d %H:%M')"
+          git push
