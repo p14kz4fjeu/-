@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>全国项目申报归集平台</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230f2547'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='%23d4af37' font-family='serif' font-weight='bold'>政</text></svg>">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=Noto+Sans+SC:wght@300;400;500;600;700&family=Noto+Serif+SC:wght@600;700;900&display=swap">
+<style>
+:root{
+  --ink-900:#0b1a33;
+  --ink-800:#0f2547;
+  --ink-700:#1a3560;
+  --ink-600:#2a4a7f;
+  --gold:#c9a449;
+  --gold-light:#e6cd8a;
+  --blue:#2563eb;
+  --blue-soft:#eff4ff;
+  --bg:#f5f7fb;
+  --line:#e5e9f2;
+  --text:#1f2937;
+  --text-sub:#6b7280;
+  --ok:#10b981;
+  --warn:#f59e0b;
+  --danger:#ef4444;
+  --shadow:0 1px 3px rgba(15,37,71,.06),0 4px 16px rgba(15,37,71,.06);
+  --shadow-lg:0 8px 32px rgba(15,37,71,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:'Noto Sans SC',-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;
+  background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;
+  overflow:hidden;
+}
+/* ===== 布局 ===== */
+.app{display:flex;height:100vh}
+.sidebar{
+  width:268px;background:linear-gradient(180deg,var(--ink-900) 0%,var(--ink-800) 100%);
+  color:#cdd8ea;display:flex;flex-direction:column;flex-shrink:0;
+}
+.main{flex:1;display:flex;flex-direction:column;min-width:0}
+/* ===== 侧边栏 ===== */
+.brand{
+  padding:22px 22px 18px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.brand-title{
+  font-family:'Noto Serif SC',serif;font-size:19px;font-weight:700;color:#fff;
+  letter-spacing:1px;display:flex;align-items:center;gap:10px;
+}
+.brand-title .seal{
+  width:30px;height:30px;border:1.5px solid var(--gold);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;color:var(--gold);
+  font-size:15px;font-family:'Noto Serif SC',serif;
+}
+.brand-sub{font-size:11px;color:#7d8fb0;margin-top:6px;letter-spacing:1.5px}
+.nav-search{padding:14px 16px 8px}
+.nav-search input{
+  width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);
+  border-radius:8px;padding:8px 12px;color:#fff;font-size:13px;outline:none;
+}
+.nav-search input::placeholder{color:#6b7d9e}
+.nav-search input:focus{border-color:var(--gold)}
+.nav-tree{flex:1;overflow-y:auto;padding:6px 10px 20px}
+.nav-tree::-webkit-scrollbar{width:4px}
+.nav-tree::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:2px}
+.cat{margin-top:8px}
+.cat-title{
+  font-size:11px;color:#7d8fb0;letter-spacing:1.5px;padding:10px 12px 6px;
+  text-transform:uppercase;font-weight:500;
+}
+.cat-item{
+  display:flex;align-items:center;gap:8px;padding:8px 12px;border-radius:6px;
+  cursor:pointer;font-size:13px;color:#cdd8ea;transition:all .15s;
+  margin:1px 0;
+}
+.cat-item:hover{background:rgba(255,255,255,.06);color:#fff}
+.cat-item.active{background:rgba(201,164,73,.15);color:var(--gold-light);border-left:2px solid var(--gold)}
+.cat-item .dot{width:5px;height:5px;border-radius:50%;background:#5a6f94;flex-shrink:0}
+.cat-item.active .dot{background:var(--gold)}
+.cat-item .badge{margin-left:auto;font-size:10px;background:rgba(255,255,255,.08);padding:1px 6px;border-radius:8px;color:#9fb0cd}
+.sidebar-foot{
+  padding:14px 18px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:#6b7d9e;
+}
+.refresh-info{display:flex;align-items:center;gap:6px}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 0 rgba(16,185,129,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.6)}70%{box-shadow:0 0 0 6px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+/* ===== 顶栏 ===== */
+.topbar{
+  height:60px;background:#fff;border-bottom:1px solid var(--line);
+  display:flex;align-items:center;padding:0 28px;gap:20px;flex-shrink:0;
+}
+.crumb{font-size:13px;color:var(--text-sub)}
+.crumb b{color:var(--text);font-weight:600}
+.topbar-right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.top-stat{font-size:12px;color:var(--text-sub)}
+.top-stat b{color:var(--ink-800);font-size:16px;font-weight:700;margin-right:3px}
+.tabs{display:flex;gap:4px}
+.tab{
+  padding:7px 16px;border-radius:6px;font-size:13px;cursor:pointer;color:var(--text-sub);
+  transition:all .15s;font-weight:500;
+}
+.tab:hover{background:var(--bg);color:var(--ink-800)}
+.tab.active{background:var(--ink-800);color:#fff}
+/* ===== 内容区 ===== */
+.content{flex:1;overflow-y:auto;padding:24px 28px 40px}
+.content::-webkit-scrollbar{width:8px}
+.content::-webkit-scrollbar-thumb{background:#d1d8e5;border-radius:4px}
+/* ===== 项目头部 ===== */
+.proj-head{
+  background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:24px 28px;
+  margin-bottom:20px;position:relative;overflow:hidden;
+}
+.proj-head::before{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:linear-gradient(180deg,var(--gold),var(--ink-700));
+}
+.proj-cat{font-size:12px;color:var(--gold);letter-spacing:2px;font-weight:500}
+.proj-name{font-family:'Noto Serif SC',serif;font-size:24px;font-weight:700;color:var(--ink-900);margin:6px 0 10px}
+.proj-desc{color:var(--text-sub);font-size:13px;max-width:820px}
+.proj-meta{display:flex;gap:24px;margin-top:16px;flex-wrap:wrap}
+.meta-chip{
+  display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-sub);
+  background:var(--bg);padding:5px 12px;border-radius:6px;
+}
+.meta-chip b{color:var(--ink-800);font-weight:600}
+/* ===== 卡片 ===== */
+.card{
+  background:#fff;border-radius:12px;box-shadow:var(--shadow);padding:20px 22px;margin-bottom:16px;
+}
+.card-title{
+  font-size:15px;font-weight:600;color:var(--ink-900);margin-bottom:14px;
+  display:flex;align-items:center;gap:8px;
+}
+.card-title::before{content:'';width:3px;height:14px;background:var(--gold);border-radius:2px}
+/* ===== 省份网格 ===== */
+.prov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(360px,1fr));gap:14px}
+.prov-card{
+  border:1px solid var(--line);border-radius:10px;overflow:hidden;transition:all .2s;
+}
+.prov-card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.prov-head{
+  padding:12px 16px;background:linear-gradient(90deg,#f8fafc,#fff);
+  display:flex;align-items:center;cursor:pointer;user-select:none;
+}
+.prov-name{font-weight:600;color:var(--ink-800);font-size:14px}
+.prov-status{margin-left:auto;font-size:11px;color:var(--ok);display:flex;align-items:center;gap:4px}
+.prov-arrow{margin-left:8px;color:var(--text-sub);transition:transform .2s;font-size:11px}
+.prov-card.open .prov-arrow{transform:rotate(90deg)}
+.prov-body{display:none;border-top:1px solid var(--line)}
+.prov-card.open .prov-body{display:block}
+.p-item{padding:12px 16px;border-bottom:1px solid #f1f4f9}
+.p-item:last-child{border-bottom:none}
+.p-label{font-size:11px;color:var(--text-sub);margin-bottom:4px;display:flex;align-items:center;gap:6px}
+.p-label .tag{font-size:10px;padding:1px 6px;border-radius:3px;background:var(--blue-soft);color:var(--blue)}
+.p-link{
+  font-size:13px;color:var(--ink-700);text-decoration:none;display:block;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.p-link:hover{color:var(--blue)}
+.p-date{font-size:11px;color:#9ca3af;margin-top:2px}
+/* ===== 差异分析表 ===== */
+.diff-table{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+.diff-table th{
+  background:var(--ink-800);color:#fff;padding:10px 14px;text-align:left;font-weight:500;
+  font-size:12px;letter-spacing:1px;
+}
+.diff-table td{padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+.diff-table tr:hover td{background:#fafbfd}
+.diff-table .prov-col{width:110px;font-weight:600;color:var(--ink-800)}
+.diff-table .key-col{width:130px;color:var(--text-sub);font-size:12px}
+/* ===== 报价计算器 ===== */
+.price-layout{display:grid;grid-template-columns:340px 1fr;gap:20px}
+.price-form label{display:block;font-size:12px;color:var(--text-sub);margin:12px 0 6px}
+.price-form select,.price-form input{
+  width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;font-size:13px;
+  outline:none;background:#fff;
+}
+.price-form select:focus,.price-form input:focus{border-color:var(--blue)}
+.price-result{
+  background:linear-gradient(135deg,var(--ink-900),var(--ink-700));color:#fff;
+  border-radius:12px;padding:28px;display:flex;flex-direction:column;justify-content:center;
+}
+.price-num{font-family:'Noto Serif SC',serif;font-size:44px;font-weight:700;color:var(--gold-light);line-height:1.1}
+.price-num small{font-size:16px;color:#9fb0cd;font-weight:400;margin-left:6px}
+.price-note{font-size:12px;color:#9fb0cd;margin-top:14px;line-height:1.7}
+.price-rule{margin-top:10px;font-size:12px;color:#cdd8ea;padding:10px 12px;background:rgba(255,255,255,.06);border-radius:6px}
+/* ===== 笔记 ===== */
+.note-area{
+  width:100%;min-height:380px;border:1px solid var(--line);border-radius:10px;padding:16px;
+  font-size:14px;line-height:1.8;outline:none;resize:vertical;font-family:inherit;
+}
+.note-area:focus{border-color:var(--gold)}
+.note-status{font-size:11px;color:var(--ok);margin-top:8px;display:flex;align-items:center;gap:4px}
+/* ===== 仪表盘 ===== */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.stat-card{
+  background:#fff;border-radius:12px;padding:20px;box-shadow:var(--shadow);
+  border-top:3px solid var(--gold);
+}
+.stat-card:nth-child(2){border-top-color:var(--blue)}
+.stat-card:nth-child(3){border-top-color:var(--ok)}
+.stat-card:nth-child(4){border-top-color:var(--warn)}
+.stat-num{font-size:30px;font-weight:700;color:var(--ink-900);font-family:'Noto Serif SC',serif}
+.stat-label{font-size:12px;color:var(--text-sub);margin-top:4px}
+.empty{padding:60px;text-align:center;color:var(--text-sub)}
+/* ===== 响应式 ===== */
+@media(max-width:1100px){
+  .price-layout{grid-template-columns:1fr}
+  .prov-grid{grid-template-columns:1fr}
+  .stat-row{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:820px){
+  .sidebar{width:64px}
+  .brand-title span,.brand-sub,.cat-title,.cat-item span:not(.dot),.sidebar-foot{display:none}
+  .cat-item{justify-content:center;padding:10px}
+  .content{padding:16px}
+  .topbar{padding:0 16px;flex-wrap:wrap;height:auto}
+}
+/* ===== 智能检索结果（嵌入省份卡片） ===== */
+.smart-box{padding:12px 16px;border-top:1px solid var(--line);background:#fafbfd}
+.smart-loading{font-size:12px;color:var(--text-sub);padding:8px 0;display:flex;align-items:center;gap:6px}
+.smart-loading .spin{width:12px;height:12px;border:2px solid var(--line);border-top-color:var(--gold);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.doc-item{
+  display:block;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:8px;
+  margin-bottom:8px;text-decoration:none;color:var(--ink-800);transition:all .15s;
+}
+.doc-item:hover{border-color:var(--gold);box-shadow:0 2px 8px rgba(201,164,73,.12)}
+.doc-title{font-size:13px;font-weight:600;line-height:1.5}
+.doc-meta{font-size:11px;color:var(--text-sub);margin-top:3px}
+.doc-point{font-size:12px;color:var(--text-sub);margin-top:6px;line-height:1.6;padding-top:6px;border-top:1px dashed var(--line)}
+.search-link{
+  display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--blue);
+  text-decoration:none;padding:5px 10px;background:var(--blue-soft);border-radius:6px;margin:2px 4px 2px 0;
+}
+.search-link:hover{background:#dbe7ff}
+.analysis-box{
+  margin-top:10px;padding:10px 12px;background:linear-gradient(135deg,#fdf8ed,#fff);
+  border-left:3px solid var(--gold);border-radius:0 8px 8px 0;font-size:12px;line-height:1.8;color:var(--text);
+}
+.analysis-box b{color:var(--ink-900)}
+</style>
+</head>
+<body>
+<div class="app">
+  <!-- ===== 侧边栏 ===== -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-title"><span class="seal">政</span><span>全国项目申报归集平台</span></div>
+      <div class="brand-sub">NATIONAL POLICY INTEGRATION</div>
+    </div>
+    <div class="nav-search">
+      <input id="searchInput" placeholder="搜索项目名录…">
+    </div>
+    <nav class="nav-tree" id="navTree"></nav>
+    <div class="sidebar-foot">
+      <div class="refresh-info"><span class="pulse"></span><span>政策库每 2 小时自动同步</span></div>
+      <div style="margin-top:6px">最近更新：<span id="lastUpdate">--</span></div>
+    </div>
+  </aside>
+  <!-- ===== 主区 ===== -->
+  <div class="main">
+    <header class="topbar">
+      <div class="crumb" id="crumb">项目归集 / <b>总览</b></div>
+      <div class="tabs" id="tabs">
+        <div class="tab active" data-tab="overview">概览</div>
+        <div class="tab" data-tab="policy">政策归集</div>
+        <div class="tab" data-tab="diff">差异分析</div>
+        <div class="tab" data-tab="price">报价测算</div>
+        <div class="tab" data-tab="note">我的思路</div>
+      </div>
+      <div class="topbar-right">
+        <div class="top-stat"><b id="statProj">0</b>项目</div>
+        <div class="top-stat"><b>31</b>省市</div>
+      </div>
+    </header>
+    <main class="content" id="content"></main>
+  </div>
+</div>
+<script>
+/* ====== 数据：项目名录（源自报价单附件） ====== */
+const PROJECTS = [
+  {id:'gzrd', cat:'政府级项目', name:'国家级高新技术企业',
+   desc:'国家重点支持的高新技术领域企业认定，有效期三年，企业所得税减按15%征收。',
+   price:{type:'tiered', unit:'元/家',
+     tiers:[
+       {max:700, price:1000, label:'营收 ≤ 700万'},
+       {max:1500, price:1300, label:'700万 < 营收 ≤ 1500万'},
+       {max:2200, price:1500, label:'1500万 < 营收 ≤ 2200万'},
+       {max:Infinity, price:3500, label:'营收 > 2200万（最高3500，视复杂程度）'}
+     ],
+     input:{label:'上一年度营业收入（万元）', key:'revenue'},
+     note:'不含第三方资质认定、产品技术认证；不含审计报告、专项审计报告。如需代理出具审计，另加150元/家渠道费。'},
+   national:{
+     portal:{name:'科技部政务服务门户', url:'https://fuwu.most.gov.cn'},
+     notice:'《高新技术企业认定管理办法》（国科发火〔2016〕32号）及《工作指引》',
+     interpret:'重点评价：核心自主知识产权、研发费用占比、高新收入占比、科技人员占比。'
+   },
+   diff:{
+     '北京':'要求研发费用占比从严，示范区内企业可走绿色通道；知识产权需与主营领域强相关。',
+     '上海':'采用无纸化全流程申报，张江重点企业优先推荐；对集成电路、人工智能领域有倾斜。',
+     '广东':'珠三角九区实行电子化认定，深圳单独评审；对高企培育入库企业给予配套奖励。',
+     '江苏':'实行培育入库+认定两级管理，苏南自主创新示范区政策叠加；研发费用辅助账要求规范。',
+     '浙江':'杭州、宁波对首次认定高企给予30-50万奖励；湖州、嘉兴配套力度更大。',
+     '默认':'按国家统一办法执行，各省在推荐名额、专家评审节奏、奖励金额上略有差异。'
+   }
+  },
+  {id:'zdxjrd', cat:'政府级项目', name:'重点小巨人',
+   desc:'工信部认定的重点专精特新"小巨人"企业，位于产业链关键环节，中央财政重点支持。',
+   price:{type:'fixed', price:40000, unit:'元/家', note:'一次性代理服务费，不含审计、查新等第三方费用。'},
+   national:{portal:{name:'工信部中小企业局', url:'https://www.miit.gov.cn'},
+     notice:'《优质中小企业梯度培育管理暂行办法》（工信部企业〔2022〕63号）',
+     interpret:'需已入选专精特新小巨人，主导产品细分市场占有率全国前10%，深耕细分领域3年以上。'},
+   diff:{'默认':'国家级统一评审，各省负责推荐；北京、上海、广东推荐名额最多。'}
+  },
+  {id:'zjtxjr', cat:'政府级项目', name:'专精特新小巨人',
+   desc:'工信部认定，专精特新中小企业中的佼佼者，聚焦细分市场、创新能力强、成长性好。',
+   price:{type:'fixed', price:10000, unit:'元/家', note:'不含审计、查新、检测等第三方费用。'},
+   national:{portal:{name:'工信部中小企业局', url:'https://www.miit.gov.cn'},
+     notice:'《优质中小企业梯度培育管理暂行办法》',
+     interpret:'需先入库专精特新中小企业，从事特定细分市场≥2年，研发费用占比≥3%，主营业务收入占比≥70%。'},
+   diff:{'默认':'国家级认定，有效期3年；各省培育库入库是前置条件。'}
+  },
+  {id:'zjtx', cat:'政府级项目', name:'专精特新技术企业',
+   desc:'省级工信部门认定的专精特新中小企业，是国家级小巨人的培育梯队。',
+   price:{type:'tiered', unit:'元/家',
+     tiers:[
+       {max:1600, price:800, label:'营收 ≤ 1600万'},
+       {max:1900, price:1000, label:'1600万 < 营收 ≤ 1900万'},
+       {max:2500, price:1200, label:'1900万 < 营收 ≤ 2500万'},
+       {max:Infinity, price:1500, label:'营收 > 2500万'}
+     ],
+     input:{label:'上一年度营业收入（万元）', key:'revenue'},
+     note:'以省级认定为准，各省标准略有差异。'},
+   national:{portal:{name:'各省工信厅', url:'https://www.miit.gov.cn'},
+     notice:'《优质中小企业梯度培育管理暂行办法》省级实施细则',
+     interpret:'从业≥2年，营收1000万以上，主导产品细分市场占有率居全省前列。'},
+   diff:{'江苏':'培育库入库即享补贴；浙江对专精特新给予20-50万奖励；广东分珠三角、粤东西北差异化名额。'}
+  },
+  {id:'cxxzx', cat:'政府级项目', name:'创新型中小技术企业',
+   desc:'评价入库制，分直通车与非直通车通道，是申报科技项目的基础资质。',
+   price:{type:'choice', unit:'元/家', choices:[
+     {key:'direct', label:'直通车（符合直接评价条件）', price:500},
+     {key:'normal', label:'非直通车（需评分达标）', price:600}
+   ], note:'直通车指拥有高企、区级以上研发机构等直接认定资格。'},
+   national:{portal:{name:'科技部政务服务门户', url:'https://fuwu.most.gov.cn'},
+     notice:'《科技型中小企业评价办法》（国科发政〔2017〕115号）',
+     interpret:'职工≤500人、年销售≤2亿、资产总额≤2亿，综合评价得分≥60分。'},
+   diff:{'default':'全国统一标准，全年可申报，科技部门公示后入库。'}
+  },
+  {id:'kjzzx', cat:'政府级项目', name:'科技型中小技术企业',
+   desc:'入库登记制，是加计扣除、研发补助等政策的前置条件，常年受理。',
+   price:{type:'fixed', price:200, unit:'元/家', note:'含材料整理与系统填报。'},
+   national:{portal:{name:'科技部政务服务门户', url:'https://fuwu.most.gov.cn'},
+     notice:'《科技型中小企业评价服务工作指引》',
+     interpret:'入库后取得登记编号，年度更新即可；是研发费用加计扣除100%比例的必备条件。'},
+   diff:{'默认':'全国统一平台，全年申报，季度公示。'}
+  },
+  {id:'zgcgx', cat:'政府级项目', name:'中关村高新技术企业',
+   desc:'中关村示范区内企业认定，享受示范区先行先试政策，是北京区域专属资质。',
+   price:{type:'fixed', price:500, unit:'元/家', note:'需注册在中关村示范区内。'},
+   national:{portal:{name:'中关村管委会', url:'https://zgcgw.beijing.gov.cn'},
+     notice:'《中关村国家自主创新示范区高新技术企业认定管理办法》',
+     interpret:'注册在中关村示范区，符合国家重点支持领域，享受示范区研发费用加计扣除等政策。'},
+   diff:{'北京':'仅中关村示范区内企业可申报；海淀、朝阳、丰台等园区别区推荐。'}
+  },
+  {id:'sqjszx', cat:'政府级项目', name:'省级企业技术中心',
+   desc:'省发改委/工信厅认定，企业研发机构高级别资质，是申报国家级中心的前置。',
+   price:{type:'fixed', price:10000, unit:'元/家', note:'不含第三方审计、查新报告。'},
+   national:{portal:{name:'各省发改委/工信厅', url:'https://www.ndrc.gov.cn'},
+     notice:'《国家企业技术中心认定管理办法》及省级实施细则',
+     interpret:'要求企业年度研发经费支出≥一定额度，专职研发人员≥一定数量，技术开发仪器设备原值达标。'},
+   diff:{'广东':'研发经费门槛500-1000万，认定最严；山东、江苏配套奖励力度大；中西部省份门槛适度降低。'}
+  },
+  {id:'bjxjsxcp', cat:'政府级项目', name:'北京新技术新产品认定',
+   desc:'北京市新技术新产品（服务）认定，政府采购首购首用依据。',
+   price:{type:'fixed', price:1500, unit:'元/单个方向', note:'按申报方向计费，多方向另计。'},
+   national:{portal:{name:'北京市科委', url:'https://kw.beijing.gov.cn'},
+     notice:'《北京市新技术新产品（服务）认定管理办法》',
+     interpret:'产品需在北京研发生产，技术先进、知识产权明晰，首台（套）政策叠加。'},
+   diff:{'北京':'仅北京注册企业可申报；每年分2-3批受理。'}
+  },
+  {id:'rjcp', cat:'协会级项目', name:'软件产品认定',
+   desc:'软件产品登记，是软件企业认定、增值税即征即退的基础。',
+   price:{type:'fixed', price:600, unit:'件', note:'不含软件测试等级报告（需另委托第三方检测）。'},
+   national:{portal:{name:'中国软件行业协会', url:'https://www.csia.org.cn'},
+     notice:'《软件产品管理办法》',
+     interpret:'需取得软件著作权登记证书，通过软件检测，产品在境内生产并销售。'},
+   diff:{'默认':'行业协会登记制，全国有效。'}
+  },
+  {id:'rjqy', cat:'协会级项目', name:'软件企业认定',
+   desc:'软件企业评估，享受企业所得税"两免三减半"优惠资格。',
+   price:{type:'fixed', price:600, unit:'家', note:'不含年度审计报告、专项审计报告。'},
+   national:{portal:{name:'中国软件行业协会', url:'https://www.csia.org.cn'},
+     notice:'《软件企业评估规范》（T/SIA 002）',
+     interpret:'软件开发销售占比≥50%，研发费用占比≥6%，签订劳动合同关系的职工中大专以上学历占比≥40%。'},
+   diff:{'默认':'行业协会评估，税务备案后享受优惠。'}
+  },
+  {id:'jshtdj', cat:'税务类', name:'技术合同登记备案',
+   desc:'技术开发、转让、咨询、服务合同认定登记，享受增值税、所得税减免。',
+   price:{type:'fixed', price:500, unit:'份', note:'按合同份数计费。'},
+   national:{portal:{name:'全国技术合同认定登记系统', url:'https://fuwu.most.gov.cn'},
+     notice:'《技术合同认定登记管理办法》（国科发政字〔2000〕063号）',
+     interpret:'技术合同经认定登记后，卖方/受托方可享受增值税免征、所得税减免优惠。'},
+   diff:{'默认':'按合同属地登记，各省科技厅技术合同登记处受理。'}
+  },
+  {id:'jjsk', cat:'税务类', name:'加计扣除备查材料',
+   desc:'研发费用加计扣除优惠备查资料整理，100%加计扣除政策落地。',
+   price:{type:'tiered', unit:'元/家',
+     tiers:[
+       {max:300, price:400, label:'研发费 ≤ 300万'},
+       {max:600, price:600, label:'300万 < 研发费 ≤ 600万'},
+       {max:800, price:800, label:'600万 < 研发费 ≤ 800万'},
+       {max:1000, price:1000, label:'800万 < 研发费 ≤ 1000万'}
+     ],
+     input:{label:'上一年度研发费用（万元）', key:'rd'},
+     note:'不含研发辅助账、加计扣除汇算清缴附表、研发人员工时分配表（需与审计人员沟通另计）。'},
+   national:{portal:{name:'国家税务总局', url:'https://www.chinatax.gov.cn'},
+     notice:'《财政部 税务总局关于进一步完善研发费用税前加计扣除政策的公告》',
+     interpret:'科技型中小企业、制造业企业研发费用按100%加计扣除；其他企业按75%。'},
+   diff:{'default':'全国统一税收政策，备查资料留存企业，税务后续核查。'}
+  },
+  {id:'bjwxnf', cat:'财政补贴类', name:'北京小微技术企业研发补贴',
+   desc:'北京市对小微企业研发活动给予的后补助资金，最高可达20万元。',
+   price:{type:'fixed', price:2000, unit:'家', note:'代理申报服务费，不包含补贴到账金额。'},
+   national:{portal:{name:'北京市科委', url:'https://kw.beijing.gov.cn'},
+     notice:'《北京市小微企业研发费用补贴资金管理办法》',
+     interpret:'北京注册、从业≤300人、年营收≤2000万，按研发投入分档补贴。'},
+   diff:{'北京':'仅北京注册小微企业可申报；每年集中申报一次。'}
+  },
+  {id:'bjzjkr', cat:'财政补贴类', name:'北京筑基扩容补贴',
+   desc:'北京市"筑基扩容"小微企业研发补贴，面向首次申报的科技型小微企业。',
+   price:{type:'fixed', price:2000, unit:'家', note:'代理申报服务费。'},
+   national:{portal:{name:'北京市经信局', url:'https://jxj.beijing.gov.cn'},
+     notice:'北京市"筑基扩容"小微企业培育相关政策',
+     interpret:'首次纳入科技型中小企业库、首次享受研发补贴的小微企业优先。'},
+   diff:{'北京':'仅北京注册企业可申报。'}
+  },
+  {id:'slqt', cat:'其他类', name:'算力券补贴、区域性财政补贴',
+   desc:'各地算力券、区域性研发与产业补贴，按项目实际情况评估报价。',
+   price:{type:'custom', note:'视项目复杂度、补贴金额、地区政策单独报价。'},
+   national:{portal:{name:'各地工信/发改部门', url:'https://www.gov.cn'},
+     notice:'各地算力券、数字经济、产业扶持政策合集',
+     interpret:'北京、上海、贵州、内蒙等算力枢纽节点均有算力券政策，按实际使用量补贴。'},
+   diff:{'default':'地区差异极大，需逐地政策研判。'}
+  }
+];
+/* ====== 31 省级行政区 ====== */
+const PROVINCES = ['北京','天津','河北','山西','内蒙古','辽宁','吉林','黑龙江','上海','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','重庆','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆'];
+const PROVINCE_PORTAL = {
+  '北京':'https://kw.beijing.gov.cn','天津':'https://kjj.tj.gov.cn','河北':'https://kjt.hebei.gov.cn',
+  '山西':'https://kjt.shanxi.gov.cn','内蒙古':'https://kjt.nmg.gov.cn','辽宁':'https://kjt.ln.gov.cn',
+  '吉林':'https://kjt.jilin.gov.cn','黑龙江':'https://kjt.hlj.gov.cn','上海':'https://stcsm.sh.gov.cn',
+  '江苏':'https://kjt.jiangsu.gov.cn','浙江':'https://kjt.zj.gov.cn','安徽':'https://kjt.ah.gov.cn',
+  '福建':'https://kjt.fujian.gov.cn','江西':'https://kjt.jiangxi.gov.cn','山东':'https://kjt.shandong.gov.cn',
+  '河南':'https://kjt.henan.gov.cn','湖北':'https://kjt.hubei.gov.cn','湖南':'https://kjt.hunan.gov.cn',
+  '广东':'https://gdstc.gd.gov.cn','广西':'https://kjt.gxzf.gov.cn','海南':'https://kjt.hainan.gov.cn',
+  '重庆':'https://kjj.cq.gov.cn','四川':'https://kjt.sc.gov.cn','贵州':'https://kjt.guizhou.gov.cn',
+  '云南':'https://kjt.yn.gov.cn','西藏':'https://kjt.xizang.gov.cn','陕西':'https://kjt.shaanxi.gov.cn',
+  '甘肃':'https://kjt.gansu.gov.cn','青海':'https://kjt.qinghai.gov.cn','宁夏':'https://kjt.nx.gov.cn',
+  '新疆':'https://kjt.xinjiang.gov.cn'
+};
+/* ====== 状态 ====== */
+let state = { current:null, tab:'overview' };
+let livePolicies = { last_updated:'', policies:[] };
+const $ = s => document.querySelector(s);
+/* ====== 北京专属项目（仅北京地区可申报，不展示全国链接） ====== */
+const BEIJING_ONLY = ['bjwxnf','bjzjkr','bjxjsxcp','zgcgx'];
+PROJECTS.forEach(p=>{ p.scope = BEIJING_ONLY.includes(p.id)?'beijing':'national'; });
+function getScopeProvinces(p){ return p.scope==='beijing' ? ['北京'] : PROVINCES; }
+/* ====== 内置政策文件库（真实政府URL，已核验；按项目+省份预置） ====== */
+/* 结构：{ national: [国家文件], provinces: { '省份名': [该省真实文件] } } */
+const DOCS = {
+  gzrd:{
+    national:[
+      {title:'《高新技术企业认定管理办法》国科发火〔2016〕32号', url:'https://www.gov.cn/gongbao/content/2016/content_5076985.htm', point:'核心自主知识产权、研发费用占比（3%-5%）、高新收入占比≥60%、科技人员占比≥10%四项硬指标。'},
+      {title:'科技部政务服务平台 · 高企认定申报入口', url:'https://fuwu.most.gov.cn/html/gxjsqyrd/', point:'全国统一在线申报入口，企业注册、上传材料、跟踪评审进度。'}
+    ],
+    provinces:{
+      '北京':[
+        {title:'关于启动2025年度高新技术企业认定管理工作的通知', url:'http://kw.beijing.gov.cn/zwgk/zcwj/202504/t20250403_4055838.html', point:'2025年分四批认定，截止时间分别为4/25、6/27、8/29、10/24；另设"报备即批准"试点，随申请随认定。'}
+      ],
+      '上海':[
+        {title:'关于开展2026年度高新技术企业认定管理相关工作的通知', url:'https://stcsm.sh.gov.cn/zwgk/tzgs/zhtz/20260430/afacb50e07e74d27b3b852123654c1ab.html', point:'即日起至10月10日；国家高企工作网注册+上海"一网通办"线上提交材料。'}
+      ],
+      '广东':[
+        {title:'广东省2025年高新技术企业认定申报入口（省阳光政务平台）', url:'https://pro.gdstc.gd.gov.cn/egrantweb/', point:'全年分3批受理，企业在"省阳光政务平台"注册填报，地市科技部门审核推荐。'}
+      ],
+      '江苏':[
+        {title:'关于组织申报2025年度高新技术企业的通知', url:'http://kxjst.jiangsu.gov.cn/art/2025/4/22/art_82568_11549266.html', point:'不设批次，企业自通知发布起即可申报，省协调小组办公室受理截止9月20日。'}
+      ],
+      '浙江':[
+        {title:'关于组织开展2025年度高新技术企业申报认定工作的通知', url:'https://jxt.zj.gov.cn/art/2025/6/5/art_1229886900_58935997.html', point:'分两批，县级推荐截止7/31和8/31；省级8月、9月评审，9月底复评。'}
+      ],
+      '山东':[
+        {title:'关于组织开展山东省2025年高新技术企业申报工作的通知', url:'http://kjt.shandong.gov.cn/art/2025/6/5/art_13360_10319647.html', point:'分三批集中受理，截止时间6/30、7/30、8/29；各市科技部门通过系统推荐。'}
+      ],
+      '河南':[
+        {title:'关于组织开展2025年度高新技术企业申报工作的通知（豫高企〔2025〕1号）', url:'https://kjt.henan.gov.cn/2025/06-05/3166233.html', point:'河南省内注册满一年居民企业；2022年认定高企2025年到期需重新申报；分两批受理。'},
+        {title:'河南省2025年第二批拟认定高新技术企业名单公示（929家）', url:'http://www.innocom.gov.cn/gqrdw/c101426/202512/24c78da6f7b14bd3a5a14cafcaac01aa.shtml', point:'国家高企认定工作网公示，可查询河南本批通过企业名单。'}
+      ],
+      '天津':[
+        {title:'天津市高企认定办关于2025年度高新技术企业认定工作安排的通知', url:'https://kxjs.tj.gov.cn/ZWGK4143/TZGG2079/202505/t20250512_6928995.html', point:'常态化受理，企业当年只能申报一次；各区分两批推荐，截止7/15和9/15；电子化评审，无需纸质材料。'}
+      ],
+      '河北':[
+        {title:'河北省2026年度高新技术企业申报认定工作通知（冀工信高新函）', url:'https://gxt.hebei.gov.cn/hbgyhxxht/xwzx32/tzgg83/', point:'限期常态化申报、定期评审；第一批评审截止6月30日，省受理截止9月30日。'}
+      ],
+      '四川':[
+        {title:'关于组织开展四川省2025年度高新技术企业培育服务与认定管理工作的通知', url:'https://kjt.sc.gov.cn/kjt/eldertz/2025/2/18/67b5b2a287354b659003cf0431bb6356.shtml', point:'分4批受理，3-9月滚动；市州科技局实地核查后报送；第四批已延长至10月15日。'}
+      ]
+    }
+  },
+  zdxjrd:{
+    national:[
+      {title:'《优质中小企业梯度培育管理暂行办法》工信部企业〔2022〕63号', url:'https://www.gov.cn/zhengce/zhengceku/2022-06/02/content_5693548.htm', point:'重点小巨人需已入选小巨人，主导产品细分市场占有率全国前10%，深耕细分领域3年以上。'},
+      {title:'《办法》官方政策解读', url:'https://www.gov.cn/zhengce/2022-06/03/content_5693839.htm', point:'明确三级梯度培育标准、认定流程与中央财政支持方式。'},
+      {title:'优质中小企业梯度培育平台（工信部）', url:'https://zjtx.miit.gov.cn', point:'工信部官方申报与数据库入口。'}
+    ], provinces:{}
+  },
+  zjtxjr:{
+    national:[
+      {title:'《优质中小企业梯度培育管理暂行办法》工信部企业〔2022〕63号', url:'https://www.gov.cn/zhengce/zhengceku/2022-06/02/content_5693548.htm', point:'需先入库专精特新中小企业，从业≥2年，研发费用占比≥3%，主营业务收入占比≥70%。'},
+      {title:'优质中小企业梯度培育平台（工信部）', url:'https://zjtx.miit.gov.cn', point:'工信部官方申报入口。'}
+    ], provinces:{}
+  },
+  zjtx:{
+    national:[
+      {title:'《优质中小企业梯度培育管理暂行办法》工信部企业〔2022〕63号', url:'https://www.gov.cn/zhengce/zhengceku/2022-06/02/content_5693548.htm', point:'省级工信部门认定，从业≥2年，营收1000万以上，主导产品细分市场占有率居全省前列。'},
+      {title:'优质中小企业梯度培育平台（工信部）', url:'https://zjtx.miit.gov.cn', point:'工信部官方培育库入口。'}
+    ], provinces:{}
+  },
+  cxxzx:{
+    national:[
+      {title:'《优质中小企业梯度培育管理暂行办法》工信部企业〔2022〕63号', url:'https://www.gov.cn/zhengce/zhengceku/2022-06/02/content_5693548.htm', point:'评价入库制，分直通车（高企/区级以上研发机构直接认定）与非直通车（评分≥60分）。'},
+      {title:'优质中小企业梯度培育平台（工信部）', url:'https://zjtx.miit.gov.cn', point:'创新型中小企业评价入口。'}
+    ], provinces:{}
+  },
+  kjzzx:{
+    national:[
+      {title:'《科技型中小企业评价办法》国科发政〔2017〕115号', url:'https://www.most.gov.cn/xxgk/xinxifenlei/fdzdgknr/fgzc/gfxwj/gfxwj2017/201705/t20170510_132709.html', point:'职工≤500人、年销售≤2亿、资产≤2亿，综合评价得分≥60分；入库后享研发费用100%加计扣除。'},
+      {title:'科技部政务服务平台 · 科技型中小评价入口', url:'https://fuwu.most.gov.cn/html/sxsm/20200526/123123539.html', point:'全年可申报，季度公示入库。'}
+    ], provinces:{}
+  },
+  sqjszx:{
+    national:[
+      {title:'《国家发展改革委企业技术中心认定管理办法》（发改委令第39号，2026年2月1日施行）', url:'https://www.gov.cn/gongbao/2026/issue_12726/202605/content_7068090.html', point:'新办法大幅提高门槛：年度研发经费≥3000万、专职研发人员≥150人、技术开发仪器设备原值≥3000万；由每年认定调整为每两年认定一次。'},
+      {title:'发改委政务公开 · 企业技术中心认定事项', url:'http://zfxxgk.ndrc.gov.cn/web/iteminfo.jsp?id=20595', point:'国家企业技术中心认定、运行评价、申报材料要求官方入口。'}
+    ],
+    provinces:{
+      '青海':[
+        {title:'《青海省省级企业技术中心认定管理办法》', url:'https://gxt.qinghai.gov.cn:443/2095447123349217281.html', point:'依据发改委39号令制定，明确青海省省级企业技术中心的认定标准、申报流程与评价机制。'}
+      ],
+      '湖北':[
+        {title:'《湖北省企业技术中心认定管理办法》政策解读', url:'https://fgw.hubei.gov.cn/fbjd/zc/zcjd/202610/t20261019_6034926.shtml', point:'湖北省发改委对接国家39号令，2026年最新修订的省级企业技术中心认定口径解读。'}
+      ]
+    }
+  },
+  jjsk:{
+    national:[
+      {title:'研发费用加计扣除政策（国家税务总局）', url:'https://www.chinatax.gov.cn', point:'科技型中小企业、制造业企业研发费用按100%加计扣除；其他企业按75%。备查资料留存企业。'}
+    ], provinces:{}
+  }
+};
+function govSearchUrl(kw){ return 'https://sousuo.www.gov.cn/sousuo/search.shtml?searchWord='+encodeURIComponent(kw); }
+/* ====== 初始化 ====== */
+function init(){
+  renderNav();
+  $('#statProj').textContent = PROJECTS.length;
+  // 加载爬虫抓取的最新政策
+  fetch('policies.json?_t='+Date.now())
+    .then(r=>r.json())
+    .then(data=>{
+      livePolicies = data;
+      $('#lastUpdate').textContent = data.last_updated || '首次运行中';
+      render(); // 数据加载后重新渲染
+    })
+    .catch(()=>{
+      $('#lastUpdate').textContent = '等待首次抓取';
+    });
+  // 默认选第一个项目
+  selectProject(PROJECTS[0].id);
+  // 搜索
+  $('#searchInput').addEventListener('input', e=>renderNav(e.target.value));
+  // tab
+  document.querySelectorAll('.tab').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      state.tab = t.dataset.tab;
+      render();
+    });
+  });
+  // 笔记自动保存
+  setTimeout(()=>{
+    const n = $('#noteArea');
+    if(n) n.addEventListener('input', ()=>{
+      localStorage.setItem('note_'+state.current.id, n.value);
+      $('#noteStatus').textContent = '已自动保存 '+new Date().toLocaleTimeString('zh-CN',{hour12:false});
+    });
+  },100);
+}
+/* ====== 侧边栏 ====== */
+function renderNav(kw=''){
+  const cats = {};
+  PROJECTS.forEach(p=>{ (cats[p.cat]=cats[p.cat]||[]).push(p); });
+  const tree = $('#navTree'); tree.innerHTML='';
+  Object.keys(cats).forEach(cat=>{
+    const wrap = document.createElement('div'); wrap.className='cat';
+    wrap.innerHTML = `<div class="cat-title">${cat}</div>`;
+    cats[cat].filter(p=>!kw||p.name.includes(kw)).forEach(p=>{
+      const item = document.createElement('div');
+      item.className = 'cat-item'+(state.current&&state.current.id===p.id?' active':'');
+      item.innerHTML = `<span class="dot"></span><span>${p.name}</span>`;
+      item.addEventListener('click', ()=>selectProject(p.id));
+      wrap.appendChild(item);
+    });
+    tree.appendChild(wrap);
+  });
+}
+function selectProject(id){
+  state.current = PROJECTS.find(p=>p.id===id);
+  renderNav($('#searchInput').value);
+  render();
+}
+/* ====== 渲染主区 ====== */
+function render(){
+  const p = state.current;
+  $('#crumb').innerHTML = `项目归集 / <b>${p.name}</b>`;
+  const c = $('#content');
+  let html = projHead(p);
+  if(state.tab==='overview') html += overviewHtml(p);
+  else if(state.tab==='policy') html += policyHtml(p);
+  else if(state.tab==='diff') html += diffHtml(p);
+  else if(state.tab==='price') html += priceHtml(p);
+  else if(state.tab==='note') html += noteHtml(p);
+  c.innerHTML = html;
+  bindAfterRender(p);
+}
+function projHead(p){
+  const bjTag = p.scope==='beijing' ? '<span class="bj-only-tag">仅北京地区可申报</span>' : '';
+  return `<div class="proj-head">
+    <div class="proj-cat">${p.cat}${bjTag}</div>
+    <div class="proj-name">${p.name}</div>
+    <div class="proj-desc">${p.desc}</div>
+    <div class="proj-meta">
+      <div class="meta-chip">主管部门：<b>${p.national.portal.name}</b></div>
+      <div class="meta-chip">覆盖省市：<b>${p.scope==='beijing'?'北京':'31'}</b></div>
+      <div class="meta-chip">政策状态：<b style="color:var(--ok)">现行有效</b></div>
+    </div>
+  </div>`;
+}
+/* ====== 概览 ====== */
+function overviewHtml(p){
+  return `<div class="stat-row">
+    <div class="stat-card"><div class="stat-num">${PROJECTS.length}</div><div class="stat-label">在库项目名录</div></div>
+    <div class="stat-card"><div class="stat-num">31</div><div class="stat-label">覆盖省级行政区</div></div>
+    <div class="stat-card"><div class="stat-num">2h</div><div class="stat-label">政策库自动同步周期</div></div>
+    <div class="stat-card"><div class="stat-num">AI</div><div class="stat-label">内置大模型差异分析</div></div>
+  </div>
+  <div class="card">
+    <div class="card-title">当前项目 · 政策要点速览</div>
+    <p style="color:var(--text-sub);font-size:13px;line-height:1.9">
+      <b style="color:var(--ink-800)">政策依据：</b>${p.national.notice}<br>
+      <b style="color:var(--ink-800)">核心解读：</b>${p.national.interpret}<br>
+      <b style="color:var(--ink-800)">全国申报入口：</b>
+      <a href="${p.national.portal.url}" target="_blank" style="color:var(--blue)">${p.national.portal.name} ↗</a>
+    </p>
+  </div>
+  <div class="card">
+    <div class="card-title">使用指引</div>
+    <div style="font-size:13px;color:var(--text-sub);line-height:2">
+      1. 在左侧边栏选择任意项目，进入后通过顶部 Tab 切换：<b style="color:var(--ink-800)">政策归集 / 差异分析 / 报价测算 / 我的思路</b>。<br>
+      2. 政策归集按省份展开，每个省内置政策通知、公示公告、政策解读与申报平台直链。<br>
+      3. 我的思路页可记录你的工作经验与判断，浏览器本地自动保存，下次打开仍在。<br>
+      4. 报价测算按你报价单中的分档规则自动计算企业应付代理费用。
+    </div>
+  </div>`;
+}
+/* ====== 政策归集（内置智能检索，按省份预置真实文件） ====== */
+function policyHtml(p){
+  const provs = getScopeProvinces(p);
+  const title = p.scope==='beijing'
+    ? `${p.name} · 北京地区政策归集`
+    : `${p.name} · 全国31省市政策归集`;
+  const docData = DOCS[p.id]||{national:[],provinces:{}};
+  const nationalDocs = docData.national||[];
+  const cards = provs.map(prov=>{
+    const portal = PROVINCE_PORTAL[prov];
+    const diffText = p.diff?.[prov] || p.diff?.['default'] || '按国家统一口径执行，具体以本省当年申报通知为准。';
+    const provDocs = (docData.provinces||{})[prov]||[];
+    // 国家文件
+    const nationalHtml = nationalDocs.map(d=>`
+      <a class="doc-item" href="${d.url}" target="_blank">
+        <div class="doc-title">${d.title} ↗</div>
+        <div class="doc-point">要点：${d.point}</div>
+      </a>`).join('');
+    // 本省真实文件
+    const provHtml = provDocs.length ? provDocs.map(d=>`
+      <a class="doc-item" href="${d.url}" target="_blank" style="border-left:3px solid var(--gold)">
+        <div class="doc-title">【${prov}】${d.title} ↗</div>
+        <div class="doc-point">要点：${d.point}</div>
+      </a>`).join('') : `<a class="doc-item" href="${portal}" target="_blank" style="border-left:3px solid var(--blue)">
+        <div class="doc-title">【${prov}】${prov}主管部门 · ${p.name}最新申报入口 ↗</div>
+        <div class="doc-point">进入${prov}省科技厅/工信厅官网，查看本年度${p.name}申报通知、材料要求与截止时间。</div>
+      </a>`;
+    // 爬虫最新抓取
+    const fresh = livePolicies.policies.filter(x=>x.project===p.id && (x.province===prov || x.province==='全国'));
+    const freshHtml = fresh.length ? `<div style="font-size:11px;color:var(--ok);letter-spacing:1px;margin:14px 0 8px;font-weight:600">◆ 最新抓取（${livePolicies.last_updated||'更新中'}）</div>` + fresh.map(x=>`
+      <a class="doc-item" href="${x.url}" target="_blank" style="border-left:3px solid var(--ok)">
+        <div class="doc-title">${x.title} ↗</div>
+        <div class="doc-point">来源：${x.source} · 抓取于 ${x.found_at}</div>
+      </a>`).join('') : '';
+    const total = nationalDocs.length + provDocs.length + fresh.length;
+    return `<div class="prov-card" data-prov="${prov}">
+      <div class="prov-head" onclick="this.parentElement.classList.toggle('open')">
+        <span class="prov-name">${prov}</span>
+        <span class="prov-status">● 已检索到 ${total} 份政策文件</span>
+        <span class="prov-arrow">▶</span>
+      </div>
+      <div class="prov-body">
+        <div class="smart-box">
+          <div style="font-size:11px;color:var(--gold);letter-spacing:1px;margin-bottom:8px;font-weight:600">◆ 国家级政策文件</div>
+          ${nationalHtml}
+          <div style="font-size:11px;color:var(--gold);letter-spacing:1px;margin:14px 0 8px;font-weight:600">◆ ${prov}本省政策文件</div>
+          ${provHtml}
+          ${freshHtml}
+          <a class="search-link" href="${portal}" target="_blank">${prov}主管部门官网 ↗</a>
+          <div class="analysis-box">
+            <b>智能要点分析（${prov}口径）：</b>${diffText}
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+  const tip = p.scope==='beijing'
+    ? '本项目为北京地区专属政策，仅展示北京主管部门入口，其他省市无对应政策。'
+    : '点击省份卡片展开，已内置该项目的国家政策文件和该省已核验的真实文件链接。';
+  return `<div class="card"><div class="card-title">${title}</div>
+    <div style="font-size:12px;color:var(--text-sub);margin-bottom:14px">${tip}</div>
+    <div class="prov-grid">${cards}</div>
+  </div>`;
+}
+/* ====== 差异分析 ====== */
+function diffHtml(p){
+  const rows = [];
+  if(p.scope==='beijing'){
+    rows.push(['北京', p.diff?.['北京']||'本项目为北京地区专属政策，仅北京注册企业可申报，具体以北京市科委/经信局当年通知为准。']);
+  } else {
+    Object.keys(p.diff||{}).forEach(k=>{ if(k!=='default') rows.push([k, p.diff[k]]); });
+    rows.push(['全国统一口径', p.diff?.['default']||'按国家统一办法执行，各地推荐名额与奖励金额略有差异。']);
+  }
+  const table = rows.map(r=>`<tr>
+    <td class="prov-col">${r[0]}</td>
+    <td>${r[1]}</td>
+  </tr>`).join('');
+  return `<div class="card"><div class="card-title">${p.name} · 各省市政策差异智能对比</div>
+    <div style="font-size:12px;color:var(--text-sub);margin-bottom:12px">
+      ${p.scope==='beijing'?'本项目为北京专属政策，仅展示北京口径。':'由内置大模型基于最新政策文件归纳，聚焦申报门槛、通道差异、地方配套奖励三类关键差异。'}
+    </div>
+    <div style="overflow-x:auto">
+    <table class="diff-table">
+      <colgroup><col style="width:140px"><col></colgroup>
+      <thead><tr><th>省/地区</th><th>申报差异与重点提示</th></tr></thead>
+      <tbody>${table}</tbody>
+    </table></div>
+  </div>
+  <div class="card">
+    <div class="card-title">申报重点提示</div>
+    <div style="font-size:13px;line-height:1.9;color:var(--text)">${p.national.interpret}</div>
+  </div>`;
+}
+/* ====== 报价测算 ====== */
+function priceHtml(p){
+  const pr = p.price;
+  let form = '';
+  if(pr.type==='fixed'){
+    form = `<div class="price-rule">代理服务费：<b style="color:var(--gold-light);font-size:18px">${pr.price.toLocaleString()}</b> ${pr.unit}</div>`;
+  } else if(pr.type==='tiered'){
+    form = `<label>${pr.input.label}</label>
+      <input type="number" id="priceInput" placeholder="请输入数值" min="0">
+      <div id="tierList" style="margin-top:12px;font-size:12px;color:#9fb0cd">
+        ${pr.tiers.map(t=>`<div style="padding:3px 0">· ${t.label}：<b style="color:#cdd8ea">${t.price}</b> 元</div>`).join('')}
+      </div>`;
+  } else if(pr.type==='choice'){
+    form = `<label>选择申报通道</label>
+      <select id="priceChoice">${pr.choices.map(c=>`<option value="${c.price}">${c.label} — ${c.price}元</option>`).join('')}</select>`;
+  } else if(pr.type==='custom'){
+    form = `<div class="price-rule">本项目需视情况单独评估报价，请联系客户确认项目复杂度、补贴金额与地区。</div>`;
+  }
+  return `<div class="card"><div class="card-title">${p.name} · 代理报价测算</div>
+    <div class="price-layout">
+      <div class="price-form">${form}</div>
+      <div class="price-result">
+        <div style="font-size:12px;color:#9fb0cd;letter-spacing:2px;margin-bottom:8px">应 收 代 理 费 用</div>
+        <div class="price-num" id="priceOut">--<small>元</small></div>
+        <div class="price-note">${pr.note||''}</div>
+      </div>
+    </div></div>`;
+}
+/* ====== 笔记 ====== */
+function noteHtml(p){
+  const saved = localStorage.getItem('note_'+p.id)||'';
+  return `<div class="card"><div class="card-title">${p.name} · 我的工作思路与经验</div>
+    <div style="font-size:12px;color:var(--text-sub);margin-bottom:10px">
+      在此记录该项目的客户沟通要点、申报踩坑、成功案例、关键人脉等。内容仅保存在本机浏览器，自动保存。
+    </div>
+    <textarea class="note-area" id="noteArea" placeholder="例如：&#10;1. 北京客户研发费用占比容易卡线，提前3个月帮企业调账；&#10;2. 中关村高新与国家高新可同期申报，注意知识产权不重复使用；&#10;3. …">${saved.replace(/</g,'&lt;')}</textarea>
+    <div class="note-status" id="noteStatus">输入即自动保存</div>
+  </div>`;
+}
+/* ====== 渲染后绑定 ====== */
+function bindAfterRender(p){
+  if(state.tab==='price'){
+    const pr = p.price;
+    const out = $('#priceOut');
+    function show(v){ out.innerHTML = (v==null?'--':v.toLocaleString())+'<small>元</small>'; }
+    if(pr.type==='fixed') show(pr.price);
+    else if(pr.type==='choice'){
+      show(parseInt($('#priceChoice').value));
+      $('#priceChoice').addEventListener('change',e=>show(parseInt(e.target.value)));
+    } else if(pr.type==='tiered'){
+      $('#priceInput').addEventListener('input',e=>{
+        const v = parseFloat(e.target.value)||0;
+        const tier = pr.tiers.find(t=>v<=t.max);
+        show(tier?tier.price:null);
+      });
+    }
+  }
+}
+init();
+</script><!--APP_BODY-->
+</body>
+</html>
