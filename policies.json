@@ -1,4 +1,181 @@
 {
-  "last_updated": "",
-  "policies": []
+  "last_updated": "2026-10-26 13:14",
+  "policies": [
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "&nbsp;&nbsp;&nbsp;&nbsp;（一）《科技部 财政部 国家税务总局关于修订印发《高新技术企业认定管理办法》的通知》（国科发火〔2016〕32号）",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101630/201602/e716e31acb6641d7bbe874daf1dd235b.shtml",
+      "found_at": "2026-10-26 13:10",
+      "source": "科技部政务服务"
+    },
+    {
+      "project": "bjxjsxcp",
+      "province": "北京",
+      "title": "北京市科学技术委员会、中关村科技园区管理委员会关于开展北京市新技术新产品新服务（总第二十二批）认定工作的通知",
+      "url": "http://kw.beijing.gov.cn/zwgk/zcwj/./202610/t20261009_4895109.html",
+      "found_at": "2026-10-26 13:10",
+      "source": "北京市科委"
+    },
+    {
+      "project": "kjzzx",
+      "province": "广东",
+      "title": "广东省科学技术厅关于广东省2026年第四批拟入库科技型中小企业名单的公示",
+      "url": "https://gdstc.gd.gov.cn/zwgk_n/tzgg/content/post_4969628.html",
+      "found_at": "2026-10-26 13:10",
+      "source": "广东科技厅"
+    },
+    {
+      "project": "kjzzx",
+      "province": "江苏",
+      "title": "关于撤销苏州凯亿富网络科技有限公司等4家科技型中小企业入库登记编号的公告",
+      "url": "https://kxjst.jiangsu.gov.cn/art/2026/10/15/art_82540_11842147.html",
+      "found_at": "2026-10-26 13:10",
+      "source": "江苏科技厅"
+    },
+    {
+      "project": "jshtdj",
+      "province": "江苏",
+      "title": "技术合同认定登记",
+      "url": "http://www.jszwfw.gov.cn/jszwfw/bscx/itemlist/bszn.do?webId=1&iddept_yw_inf=113200000140003784200070600100001&ql_kind=07&iddept_ql_inf=1132000001400037842000706001000",
+      "found_at": "2026-10-26 13:10",
+      "source": "江苏科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "江苏",
+      "title": "高新技术企业认定",
+      "url": "http://www.jszwfw.gov.cn/jszwfw/bscx/itemlist/bszn.do?webId=1&iddept_yw_inf=113200000140003784200070600800001&ql_kind=07&iddept_ql_inf=1132000001400037842000706008000",
+      "found_at": "2026-10-26 13:10",
+      "source": "江苏科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "湖北",
+      "title": "关于组织申报2026年湖北省支持高新技术企业发展专项资金的通知2026-10-19",
+      "url": "https://kjt.hubei.gov.cn/./kjdt/tzgg/202610/t20261019_6035490.shtml",
+      "found_at": "2026-10-26 13:11",
+      "source": "湖北科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "湖北",
+      "title": "省财政厅 省科学技术厅关于印发《湖北省支持高新技术企业发展专项资金管理办法》的通知2026-10-19",
+      "url": "https://kjt.hubei.gov.cn/./kjdt/tzgg/202610/t20261019_6035486.shtml",
+      "found_at": "2026-10-26 13:11",
+      "source": "湖北科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "湖北",
+      "title": "关于高新技术企业认定申报的问题",
+      "url": "https://kjt.hubei.gov.cn/./hdjl/lxgs/202608/t20260826_6001174.shtml",
+      "found_at": "2026-10-26 13:11",
+      "source": "湖北科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "湖北",
+      "title": "高新技术企业查询",
+      "url": "https://kjt.hubei.gov.cn/ywt/#/portal/bmcx/bm008001",
+      "found_at": "2026-10-26 13:11",
+      "source": "湖北科技厅"
+    },
+    {
+      "project": "kjzzx",
+      "province": "湖北",
+      "title": "科技型中小企业查询",
+      "url": "https://kjt.hubei.gov.cn/ywt/#/portal/bmcx/bm008002",
+      "found_at": "2026-10-26 13:11",
+      "source": "湖北科技厅"
+    },
+    {
+      "project": "jjsk",
+      "province": "福建",
+      "title": "研发费用加计扣除项目鉴定案例（第三辑）",
+      "url": "https://kjt.fujian.gov.cn/./xxgk/zcjd/qtzcwjjd/202610/t20261015_7225470.htm",
+      "found_at": "2026-10-26 13:11",
+      "source": "福建科技厅"
+    },
+    {
+      "project": "jshtdj",
+      "province": "辽宁",
+      "title": "省科技厅举办《技术合同认定登记管理办法及相关...",
+      "url": "https://kjt.ln.gov.cn/kjt/kjgz/cgzh/2026090316461343516/index.shtml",
+      "found_at": "2026-10-26 13:11",
+      "source": "辽宁科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "辽宁",
+      "title": "高新技术企业及高新区统计工作完成移交",
+      "url": "https://kjt.ln.gov.cn/kjt/kjgz/xxs/2025121910235954313/index.shtml",
+      "found_at": "2026-10-26 13:11",
+      "source": "辽宁科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "云南",
+      "title": "云南省科技厅关于印发云南省2026年度高新技术企业培育库入库企业名单的通知",
+      "url": "https://kjt.yn.gov.cn/./xwdt/tzgg/202610/t20261021_4353836.html",
+      "found_at": "2026-10-26 13:12",
+      "source": "云南科技厅"
+    },
+    {
+      "project": "kjzzx",
+      "province": "云南",
+      "title": "云南省科技厅关于公示2026年第2批拟入库科技型中小企业名单的通知",
+      "url": "https://kjt.yn.gov.cn/./xwdt/tzgg/202610/t20261010_4342063.html",
+      "found_at": "2026-10-26 13:12",
+      "source": "云南科技厅"
+    },
+    {
+      "project": "kjzzx",
+      "province": "云南",
+      "title": "云南省科技厅关于印发云南省科技型中小企业备案管理办法的通知",
+      "url": "https://kjt.yn.gov.cn/./zfxxgkpt/zcwj/xzgfxwj/202507/t20250716_4337369.html",
+      "found_at": "2026-10-26 13:12",
+      "source": "云南科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "贵州",
+      "title": "关于贵州省2026年高新技术企业更名公示（第三批）",
+      "url": "http://kjt.guizhou.gov.cn/xwzx/tzgg_73876/202610/t20261023_91023656.html",
+      "found_at": "2026-10-26 13:13",
+      "source": "贵州科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "贵州",
+      "title": "关于贵州省2026年第二批完成异地搬迁高新技术企业的公示",
+      "url": "http://kjt.guizhou.gov.cn/xwzx/tzgg_73876/202610/t20261023_91023620.html",
+      "found_at": "2026-10-26 13:13",
+      "source": "贵州科技厅"
+    },
+    {
+      "project": "gzrd",
+      "province": "贵州",
+      "title": "高新技术企业认定",
+      "url": "http://www.innocom.gov.cn/",
+      "found_at": "2026-10-26 13:13",
+      "source": "贵州科技厅"
+    },
+    {
+      "project": "kjzzx",
+      "province": "新疆",
+      "title": "关于自治区2026年第五批拟入库科技型中小企业名...",
+      "url": "https://kjt.xinjiang.gov.cn/kjt/c100264/202610/3022cebb8a65480da830c35cde37b3c3.shtml",
+      "found_at": "2026-10-26 13:13",
+      "source": "新疆科技厅"
+    },
+    {
+      "project": "kjzzx",
+      "province": "宁夏",
+      "title": "》\n                                                            自治区科技厅等3部门关于印发《宁夏科技型中小企业风险...",
+      "url": "https://kjt.nx.gov.cn/./zcfg/gfxwj/202510/t20251021_5059116.html",
+      "found_at": "2026-10-26 13:13",
+      "source": "宁夏科技厅"
+    }
+  ]
 }
