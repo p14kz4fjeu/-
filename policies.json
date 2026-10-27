@@ -1,6 +1,645 @@
 {
-  "last_updated": "2026-10-27 04:16",
+  "last_updated": "2026-10-27 06:27",
   "policies": [
+    {
+      "project": "gzrd",
+      "province": "深圳",
+      "title": "市工业和信息化局关于开展2026年第二批高新技术企业异地搬迁申报工作的通知",
+      "url": "https://gxj.sz.gov.cn/xxgk/xxgkml/qt/tzgg/content/post_13000711.html",
+      "date": "",
+      "source": "深圳市工信局",
+      "found_at": "2026-10-27 05:44"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "深圳",
+      "title": "《深圳市工业和信息化局优质中小企业梯度培育管理实施细则》（2025年修订版）",
+      "url": "https://gxj.sz.gov.cn/xxgk/xxgkml/zcfgjzcjd/content/post_12435147.html",
+      "date": "",
+      "source": "深圳市工信局",
+      "found_at": "2026-10-27 05:44"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "深圳",
+      "title": "《深圳市工业和信息化局优质中小企业梯度培育管理实施细则》(2025年修订版）政策...",
+      "url": "https://gxj.sz.gov.cn/xxgk/xxgkml/zcfgjzcjd/content/post_12435143.html",
+      "date": "",
+      "source": "深圳市工信局",
+      "found_at": "2026-10-27 05:44"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "深圳",
+      "title": "【深工信规〔2025〕8号】《深圳市工业和信息化局优质中小企业梯度培育管理实施细则》（2025年修订版）",
+      "url": "https://gxj.sz.gov.cn/xxgk/xxgkml/zcfgjzcjd/gfxwj/content/post_12433291.html",
+      "date": "",
+      "source": "深圳市工信局",
+      "found_at": "2026-10-27 05:44"
+    },
+    {
+      "project": "kjzzx",
+      "province": "广东",
+      "title": "广东省2026年第四批拟入库科技型中小企业名单",
+      "url": "https://gdstc.gd.gov.cn/attachment/0/628/628023/4969628.pdf",
+      "date": "",
+      "source": "广东省科技厅",
+      "found_at": "2026-10-27 05:58"
+    },
+    {
+      "project": "kjzzx",
+      "province": "云南",
+      "title": "云南省2026年第2批拟入库科技型中小企业名单",
+      "url": "https://kjt.yn.gov.cn/xwdt/tzgg/202610/P020261010583991653691.xlsx",
+      "date": "",
+      "source": "云南省科技厅",
+      "found_at": "2026-10-27 06:03"
+    },
+    {
+      "project": "gzrd",
+      "province": "宁夏",
+      "title": "》《关于加快发展高新技术企业的若干措施》政策问答",
+      "url": "https://kjt.nx.gov.cn/ztzl/kjzcbwbd/202209/t20220901_3730502.html",
+      "date": "",
+      "source": "宁夏科技厅",
+      "found_at": "2026-10-27 06:06"
+    },
+    {
+      "project": "cxxzx",
+      "province": "北京",
+      "title": "2026年度第十批北京市创新型中小企业名单",
+      "url": "https://jxj.beijing.gov.cn/jxdt/tzgg/202610/P020261012379908702446.docx",
+      "date": "",
+      "source": "北京市经信局",
+      "found_at": "2026-10-27 06:07"
+    },
+    {
+      "project": "zjtx",
+      "province": "江苏",
+      "title": "江苏省专精特新中小企业申请书（参考）",
+      "url": "http://gxt.jiangsu.gov.cn/module/download/downfile.jsp?classid=0&filename=30a56a40b0fe4b6eb817e9fbf5f424af.docx",
+      "date": "",
+      "source": "江苏省工信厅",
+      "found_at": "2026-10-27 06:13"
+    },
+    {
+      "project": "zjtx",
+      "province": "江苏",
+      "title": "江苏省专精特新中小企业复核申请书（参考）",
+      "url": "http://gxt.jiangsu.gov.cn/module/download/downfile.jsp?classid=0&filename=5841ae7c35714d35a3f8584ca8dc7478.docx",
+      "date": "",
+      "source": "江苏省工信厅",
+      "found_at": "2026-10-27 06:13"
+    },
+    {
+      "project": "zjtx",
+      "province": "江苏",
+      "title": "专精特新中小企业认定推荐汇总表",
+      "url": "http://gxt.jiangsu.gov.cn/module/download/downfile.jsp?classid=0&filename=9c94803881ca413899270fed2fa108da.xlsx",
+      "date": "",
+      "source": "江苏省工信厅",
+      "found_at": "2026-10-27 06:13"
+    },
+    {
+      "project": "zjtx",
+      "province": "江苏",
+      "title": "专精特新中小企业复核情况汇总表",
+      "url": "http://gxt.jiangsu.gov.cn/module/download/downfile.jsp?classid=0&filename=cf23d812bc7245adabcc82d31ffe8f02.xlsx",
+      "date": "",
+      "source": "江苏省工信厅",
+      "found_at": "2026-10-27 06:13"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "福建",
+      "title": "福建省优质中小企业申报优质中小企业梯度培育工作，坚持完整、准确、全面贯彻新发展理念，坚持专精特新发展方向，坚持“有进有出”动态管理，坚持分层分类分级指导和精准服务，坚持政策引领、企业自愿、培育促进、扩面提质、好中选优、公开透明的原则，按照“谁推荐、谁把关，谁审核、谁管理”方式统筹开展、有序推进。查看详情>2",
+      "url": "http://www.fujian.gov.cn/nrrh/sgxt/202403/t20240314_6414489.htm",
+      "date": "",
+      "source": "福建省工信厅",
+      "found_at": "2026-10-27 06:14"
+    },
+    {
+      "project": "rjcp",
+      "province": "湖北",
+      "title": "1.湖北省首版次软件产品申报范围.docx",
+      "url": "https://jxt.hubei.gov.cn/fbjd/zc/qtzdgkwj/gwfb/202610/P020261012632697329956.docx",
+      "date": "",
+      "source": "湖北省经信厅",
+      "found_at": "2026-10-27 06:16"
+    },
+    {
+      "project": "rjcp",
+      "province": "湖北",
+      "title": "2.湖北省首版次软件产品申报要求.docx",
+      "url": "https://jxt.hubei.gov.cn/fbjd/zc/qtzdgkwj/gwfb/202610/P020261012632699635665.docx",
+      "date": "",
+      "source": "湖北省经信厅",
+      "found_at": "2026-10-27 06:16"
+    },
+    {
+      "project": "rjcp",
+      "province": "湖北",
+      "title": "3.2026年湖北省首版次软件产品申报书.docx",
+      "url": "https://jxt.hubei.gov.cn/fbjd/zc/qtzdgkwj/gwfb/202610/P020261012632701891615.docx",
+      "date": "",
+      "source": "湖北省经信厅",
+      "found_at": "2026-10-27 06:16"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公告2025-07-02",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=2823&channelId=10&categoryId=132",
+      "date": "2025-07-02",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "财政部 工业和信息化部关于进一步支持专精特新中小企业高质量发展的通知2024-06-19",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=2783&channelId=10&categoryId=132",
+      "date": "2024-06-19",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "zjtx",
+      "province": "新疆",
+      "title": "关于开展2024年度自治区专精特新中小企业认定和2021年度自治区专精特新中小企业复核工作的通知（新工信企业〔2024〕17号）",
+      "url": "http://gxt.xinjiang.gov.cn/gxt/tzgg/202406/e55ed8dd7e80452bb038b903440e0c18.shtml",
+      "date": "",
+      "source": "新疆工信厅",
+      "found_at": "2026-10-27 06:25"
+    },
+    {
+      "project": "kjzzx",
+      "province": "全国",
+      "title": "科技型中小企业服务",
+      "url": "http://www.innofund.gov.cn/",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "青岛市认定机构：关于青岛市2026年度第五批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101504/202610/cf0eb0f75e164077a52c8400013240b8.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "宁波市认定机构：关于宁波市2026年第八批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101498/202610/e7bf8904441a4a43933bf13bb8f4a404.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "辽宁省认定机构：关于辽宁省2026年第三批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101491/202610/2958c6e042c5404e9b13bfc92215fde9.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "河南省认定机构：关于公布河南省2026年第三批更名和重大变化高新技术企业名...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101505/202610/fb959d7b1cdf44518f656e4d7aaa5b2c.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "重庆市认定机构：关于重庆市2026年第五批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101512/202610/6d1d3400ae4543d7973582bd72be3de3.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "北京市认定机构：关于北京市 2026 年第四批高新技术企业更名的通知",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101486/202610/9ac33adb604c440da6d4b4bb5422e12d.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "四川省认定机构：关于四川省2026年第二批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101513/202610/35631331071f41e4a6888455a2965602.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "深圳市认定机构：关于2026年第一批高新技术企业更名及重大变化名单的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101509/202610/7f3e8caaef5c4bb181ec72c3c53fa8ab.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "河北省认定机构：关于公布河北省2026年第三批更名及重大变化高新技术企业的...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101488/202610/6a6874c8c8af482ba30e7c2b7ad38818.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "青岛市认定机构：关于青岛市2026年第四批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101504/202610/119abfc2b0124204a49cf7c1d866f53d.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "湖北省认定机构：关于湖北省2026年第一批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101506/202610/ba37633eab6d43078f20e41e7d5fc982.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "广西壮族自治区认定机构：关于广西壮族自治区 2026 年第一批高新技术企业重...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101510/202610/a77e52170a1a48ba9b5a0e5e27a7ef0d.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "山西省认定机构：关于公布2026年第三批高新技术企业更名名单的通知",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101489/202610/0a1c681f3d2941278eff4f1ffe178375.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "厦门市认定机构：关于厦门市2026年第五批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101501/202609/2a046dae3a414db9a4341048479233f8.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "厦门市认定机构：关于厦门市2026年第四批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101501/202609/38a06c23c1f44988ad4d1f632e909b6d.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "上海市认定机构：关于公布上海市2026年第二批高新技术企业更名名单的通知",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101495/202609/35aba6d80f3e4cdf8b48e9a255a27c34.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "天津市认定机构：关于天津市2026年第二批高新技术企业更名的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101487/202609/2d8dc1ef85a347bb8bc8d5b1da7bf389.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "安徽省认定机构：关于公布安徽省高新技术企业更名名单（2026年第二批）的通...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101499/202609/8301ce7619c649beac6edf9ddbdc1ef4.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "江苏省认定机构：关于取消网根（南京）网络中心有限公司等高新技术企业资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101532/202610/8fab44cc39db4a47a9c8a1b77caa5dad.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "北京市认定机构：关于取消北京天弘方泰建筑工程有限公司等企业高新技术企业...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101522/202610/72501303e64542d5b59fa3c8e0b3e1f0.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "江西省认定机构：关于取消信丰航敏电子科技有限公司高新技术企业资格的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101538/202610/8df91372aa034f57ba1ae3b5fc5b3d48.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "上海市认定机构：关于取消上海淇赢科技有限公司等企业高新技术企业资格的公...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101531/202610/fddd9ceb270340ec993f363963e4081f.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "河南省认定机构：关于取消河南奇测电子科技有限公司等41家企业高新技术企业...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101541/202610/a3f5dabacce642bb8f61048680edd96c.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "河北省认定机构：关于取消保定华联领世科技有限公司等147家企业高新技术企业...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101524/202610/782c3bd0171b408499a6cfd4d69f6c7e.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "山东省认定机构：关于取消烟台金斯波格钢琴有限责任公司等高新技术企业资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101539/202609/95b06c954736451c85b731da41dc12df.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "江苏省认定机构：关于取消苏州安仕泊环保科技有限公司等高新技术企业资格的...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101532/202609/a49317ab1f78424e84829566f3a3db1e.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "贵州省认定机构：关于贵州省取消3户企业高新技术企业资格的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101550/202609/963a8f377e414425b24990324a124f21.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "山东省认定机构：关于取消山东春阳门窗幕墙（集团）有限公司等高新技术企业...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101539/202608/9f97c5c895584cf081c1080b8e17c873.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "山东省认定机构：关于撤销烟台引航电子科技有限公司等85家企业高新技术企业...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101539/202608/73393e8e6f524df0aa3e57c5925fae86.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "北京市认定机构：关于取消北京易德融合科技有限公司等企业高新技术企业资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101522/202608/5d0544861748461e8adc04d92edc030b.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "深圳市认定机构：关于取消深圳市亿泽鑫科技有限公司等3家企业高新技术企业资...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101545/202608/96a862c7eb2444f197a5b41477fee1cf.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "大连市认定机构：关于取消大连浩海科技服务有限公司等高新技术企业资格的公...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101528/202608/f8a5ca77fd0f4494ab015b2b673e064b.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "浙江省认定机构：关于取消浙江广华纺织有限公司等2家企业高新技术企业资格的...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101533/202608/95ab6291b6e44fc18e5bc5cd83554016.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "海南省认定机构：关于三亚味云科技有限公司等9家高新技术企业（第四批）资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101583/202610/70ff3704c431407cae791ca59235bc61.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "四川省认定机构：关于四川省2026年第三批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101585/202610/7529f5df21b644c985ee166402317765.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "湖北省认定机构：关于湖北省2026年第一批完成异地整体搬迁高新技术企业的公...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101578/202610/eb23c6e0a7474fc0a935dc45472e6cc7.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "河南省认定机构：河南省关于2026年第二批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101577/202609/772016cca011486a89b5eb24e1b4960d.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "天津市认定机构：天津市关于2026年第二批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101559/202609/07031956753f44c492e9c132d003e474.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "北京市认定机构：北京市关于 2026 年第四批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101558/202609/a2e9fa09a98d493d9894c84e4757b90c.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "安徽省认定机构：关于安徽省完成异地整体搬迁高新技术企业（2026年第三批）...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101571/202609/ba26932751d34bc5873fc0bb59fe9ee2.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "江苏省认定机构：关于纳米维景（南京）科技集团有限公司等高新技术企业资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101568/202609/36f0fbe29e424731b34564baf23954a4.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "青岛市认定机构：关于睦星科技（北京）有限公司等3家企业高新技术企业资格继...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101576/202609/3db54825304e4a28af7e51a36d9048e2.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "重庆市认定机构：关于重庆市2026年第四批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101584/202609/267a66001d0e4db6bb36d8219c24a095.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "厦门市认定机构：关于厦门市2026年第二批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101573/202609/fac2670d59a84957aab0df85e5e19a62.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "上海市认定机构：关于上海市2026年第三批异地搬迁高新技术企业名单的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101567/202609/0d7a4d3a61004fea9ef61f14db9b8a7b.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "河北省认定机构：关于第四批完成异地整体迁移高新技术企业资格继续有效的公...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101560/202609/d05e47d98dd74d63b3f0dd9c6afd223a.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "广东省认定机构：关于广东省2026年第六批完成异地搬迁高新技术企业的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101580/202609/05576ca781e1438da03f8dcddfbc99b6.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "江苏省认定机构：关于华立绿色智慧科技（南京）有限公司等高新技术企业资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101568/202608/4ee96a11ab2f45f18cac747fa4bf5bc9.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "江西省认定机构：关于江西省2026年第四批完成异地整体搬迁高新技术企业资格...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101574/202608/3e196b06f3564e22b5063bb09f674109.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "安徽省认定机构：关于安徽省完成异地整体搬迁高新技术企业（2026年第二批）...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101571/202608/c77c356ad64548b8975eceb240781aa4.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "浙江省认定机构：浙江省2026年第二批异地整体搬迁高新技术企业资格继续有效...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101569/202608/8f5ee47d1c9f4369aed4cf45c9469037.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 06:26"
+    },
     {
       "project": "gzrd",
       "province": "辽宁",
