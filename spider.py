@@ -29,9 +29,10 @@ PROJECT_KEYWORDS = {
     'jjsk':     ['研发费用加计扣除', '研发支出辅助账', '研发加计扣除备查', '加计扣除留存备查'],
 }
 
-SKIP_WORDS = ['党建', '人事', '预决算', '财务', '采购', '招标', '邮箱', '登录', '注册', '招聘', '公示名单', '拟认定名单']
-COLUMN_KEYWORDS = ['通知', '公告', '政策', '文件', '高新', '公示', '政务公开', '信息公开', '申报', '认定']
-MAX_PAGES_PER_COLUMN = 50  # 每个栏目最多翻50页
+SKIP_WORDS = ['党建', '人事', '预决算', '财务', '采购公告', '招标公告', '邮箱', '登录', '注册', '招聘', '意见征集', '访谈', '直播', '视频', '图解']
+# 扩大栏目识别：所有可能包含政策通知的栏目都抓
+COLUMN_KEYWORDS = ['通知', '公告', '政策', '文件', '高新', '公示', '政务公开', '信息公开', '申报', '认定', '政策动态', '信息公告', '信息公示', '解读', '要闻动态', '政务服务', '通知公告', '政策文件', '政策解读', '政府信息公开', '业务', '办事', '公告公示', '通知公示', '最新', '新闻', '动态', '资讯']
+MAX_PAGES_PER_COLUMN = 50
 UA_POOL = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -168,7 +169,7 @@ def extract_links(html, base_url):
     for a in soup.find_all('a', href=True):
         text = a.get_text(strip=True)
         href = a['href']
-        if not text or len(text) < 6:
+        if not text or len(text) < 2:
             continue
         if href.startswith('javascript') or href.startswith('#') or href.startswith('mailto'):
             continue
@@ -180,16 +181,30 @@ def find_columns(home_html, base_url):
     links = extract_links(home_html, base_url)
     columns = []
     seen = set()
+    # 判断URL是否像栏目页（目录/list/index结尾），优先抓
+    def is_column_url(url):
+        path = url.lower()
+        return any(k in path for k in ['/list', '/index', '/tzgg', '/zcwj', '/zcfg', '/zwgk', '/zfxxgk', '/gfxwj', '/lzyj', '/jdhy', '/govxxx', '/channel', '/column'])
+    scored = []
     for link in links:
         text = link['title']
         if should_skip(text):
             continue
-        if any(kw in text for kw in COLUMN_KEYWORDS):
-            key = link['url']
-            if key not in seen:
-                seen.add(key)
-                columns.append(link)
-    return columns[:10]
+        if not any(kw in text for kw in COLUMN_KEYWORDS):
+            continue
+        # 栏目页URL高分，具体文章页低分
+        score = 10 if is_column_url(link['url']) else 1
+        # 短文本（栏目名）再加2分
+        if len(text) <= 8:
+            score += 2
+        scored.append((score, link))
+    scored.sort(key=lambda x: -x[0])
+    for score, link in scored[:20]:  # 最多抓20个栏目
+        key = link['url']
+        if key not in seen:
+            seen.add(key)
+            columns.append(link)
+    return columns
 
 def find_next_page(html, base_url):
     soup = BeautifulSoup(html, 'html.parser')
@@ -198,6 +213,24 @@ def find_next_page(html, base_url):
         if text in ['下一页', '下页', '>', 'Next', 'next', '»', '下一页>']:
             return urljoin(base_url, a['href'])
     return None
+
+def detect_js_pages(html, base_url):
+    """识别JS分页模式，如 createPageHTML('page_div', 50, 1, 'list', 'shtml', 1000)
+    返回从当前页之后的所有页URL列表"""
+    m = re.search(r"createPageHTML\(['\"][^'\"]+['\"]\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*['\"]([^'\"]+)['\"]\s*,\s*['\"]([^'\"]+)['\"]", html)
+    if not m:
+        return []
+    total = int(m.group(1))
+    current = int(m.group(2))
+    prefix = m.group(3)
+    ext = m.group(4)
+    # base_url 形如 .../list.shtml，要替换成 .../list_N.shtml
+    # 当前页可能是 list.shtml 或 list_1.shtml
+    base_dir = base_url.rsplit('/', 1)[0] + '/'
+    pages = []
+    for p in range(current + 1, total + 1):
+        pages.append(f'{base_dir}{prefix}_{p}.{ext}')
+    return pages[:MAX_PAGES_PER_COLUMN]
 
 def extract_date(text):
     m = re.search(r'(20\d{2})[-年/.](\d{1,2})[-月/.](\d{1,2})', text)
@@ -209,29 +242,44 @@ def extract_date(text):
 def crawl_site(sess, site, seen_urls):
     province = site['province']
     base = site['url']
-    print(f'\n[{province}] {site["dept"]}')
+    dept = site['dept']
+    result = {'dept': dept, 'province': province, 'url': base, 'status': 'ok', 'columns_found': 0, 'pages_crawled': 0, 'items_found': 0}
     found = []
 
+    print(f'\n[{province}] {dept}')
     home = fetch(sess, base)
     if not home:
-        print('  首页访问失败')
-        return found
+        print('  ❌ 首页访问失败')
+        result['status'] = 'failed_home'
+        return found, result
 
     columns = find_columns(home, base)
-    print(f'  发现 {len(columns)} 个栏目')
+    result['columns_found'] = len(columns)
+    print(f'  发现 {len(columns)} 个相关栏目')
 
     visited_pages = set()
-    for col in columns[:8]:
-        current_url = col['url']
-        page = 1
-        while current_url and page <= MAX_PAGES_PER_COLUMN:
-            if current_url in visited_pages:
-                break
-            visited_pages.add(current_url)
+    total_pages = 0
+    for col in columns[:20]:
+        # 先访问第1页
+        page_urls = [col['url']]
+        first_html = fetch(sess, col['url'])
+        if not first_html:
+            continue
+        # 检查是否有JS分页，如果有，构造后续所有页URL
+        js_pages = detect_js_pages(first_html, col['url'])
+        if js_pages:
+            page_urls.extend(js_pages)
+            print(f'  检测到JS分页，共{len(js_pages)+1}页')
 
-            html = fetch(sess, current_url)
+        for idx, current_url in enumerate(page_urls):
+            if current_url in visited_pages:
+                continue
+            visited_pages.add(current_url)
+            total_pages += 1
+
+            html = first_html if idx == 0 else fetch(sess, current_url)
             if not html:
-                break
+                continue
 
             links = extract_links(html, current_url)
             for link in links:
@@ -252,23 +300,60 @@ def crawl_site(sess, site, seen_urls):
                         'title': title,
                         'url': url,
                         'date': date,
-                        'source': site['dept'],
+                        'source': dept,
                         'found_at': datetime.now().strftime('%Y-%m-%d %H:%M'),
                     })
                     seen_urls.add(url)
                 print(f'  ✓ [{",".join(pids)}] {title[:45]}')
 
-            next_url = find_next_page(html, current_url)
-            if not next_url or next_url == current_url:
-                break
-            current_url = next_url
-            page += 1
-        print(f'  栏目翻页到第{page}页')
+            # 如果没有JS分页，用传统"下一页"逻辑
+            if idx == 0 and not js_pages:
+                next_url = find_next_page(html, current_url)
+                page_num = 2
+                while next_url and page_num <= MAX_PAGES_PER_COLUMN:
+                    if next_url in visited_pages:
+                        break
+                    visited_pages.add(next_url)
+                    total_pages += 1
+                    nhtml = fetch(sess, next_url)
+                    if not nhtml:
+                        break
+                    nlinks = extract_links(nhtml, next_url)
+                    for link in nlinks:
+                        title = link['title']
+                        url = link['url']
+                        if should_skip(title):
+                            continue
+                        pids = match_projects(title)
+                        if not pids:
+                            continue
+                        if url in seen_urls:
+                            continue
+                        date = extract_date(title)
+                        for pid in pids:
+                            found.append({
+                                'project': pid,
+                                'province': province,
+                                'title': title,
+                                'url': url,
+                                'date': date,
+                                'source': dept,
+                                'found_at': datetime.now().strftime('%Y-%m-%d %H:%M'),
+                            })
+                            seen_urls.add(url)
+                        print(f'  ✓ [{",".join(pids)}] {title[:45]}')
+                    next_url = find_next_page(nhtml, next_url)
+                    page_num += 1
 
-    return found
+    result['pages_crawled'] = total_pages
+    result['items_found'] = len(found)
+    print(f'  ✅ 完成: 翻了{total_pages}页, 抓到{len(found)}条')
+    return found, result
 
 def main():
-    print(f'=== 开始爬取 {datetime.now().strftime("%Y-%m-%d %H:%M")} ===')
+    start_time = datetime.now()
+    print(f'=== 开始爬取 {start_time.strftime("%Y-%m-%d %H:%M")} ===')
+    print(f'=== 共 {len(SITES)} 个监测站点 ===')
     existing_path = 'policies.json'
     if os.path.exists(existing_path):
         with open(existing_path, 'r', encoding='utf-8') as f:
@@ -280,12 +365,16 @@ def main():
     sess = get_session()
 
     all_new = []
-    for site in SITES:
+    crawl_log = []
+    for i, site in enumerate(SITES, 1):
+        print(f'\n----- [{i}/{len(SITES)}] -----')
         try:
-            results = crawl_site(sess, site, seen_urls)
+            results, log = crawl_site(sess, site, seen_urls)
             all_new.extend(results)
+            crawl_log.append(log)
         except Exception as e:
-            print(f'  [错误] {site["dept"]}: {e}')
+            print(f'  ❌ [异常] {site["dept"]}: {e}')
+            crawl_log.append({'dept': site['dept'], 'province': site['province'], 'status': 'error', 'error': str(e)})
             continue
 
     existing['policies'] = all_new + existing['policies']
@@ -295,7 +384,24 @@ def main():
     with open(existing_path, 'w', encoding='utf-8') as f:
         json.dump(existing, f, ensure_ascii=False, indent=2)
 
-    print(f'\n=== 完成: 新增 {len(all_new)} 条, 总计 {len(existing["policies"])} 条 ===')
+    # ====== 输出完整汇总表 ======
+    elapsed = (datetime.now() - start_time).seconds
+    print('\n' + '='*70)
+    print(f'  爬取完成! 用时 {elapsed//60}分{elapsed%60}秒')
+    print(f'  总站点: {len(SITES)} | 成功: {sum(1 for x in crawl_log if x["status"]=="ok")} | 失败: {sum(1 for x in crawl_log if x["status"]!="ok")}')
+    print(f'  新增政策: {len(all_new)} 条 | 累计: {len(existing["policies"])} 条')
+    print('='*70)
+    print(f'\n{"省份":<8}{"部门":<20}{"状态":<12}{"栏目":<6}{"页数":<6}{"抓到":<6}')
+    print('-'*70)
+    for log in crawl_log:
+        status_mark = '✅' if log['status']=='ok' else '❌'
+        print(f'{log["province"]:<8}{log["dept"][:18]:<20}{status_mark+log["status"]:<12}{log.get("columns_found",0):<6}{log.get("pages_crawled",0):<6}{log.get("items_found",0):<6}')
+    failed = [x for x in crawl_log if x['status']!='ok']
+    if failed:
+        print(f'\n⚠️  失败站点({len(failed)}个):')
+        for f in failed:
+            print(f'  - {f["province"]} {f["dept"]}: {f.get("error", f["status"])}')
+    print('\n' + '='*70)
 
 if __name__ == '__main__':
     main()
