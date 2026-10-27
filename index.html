@@ -461,9 +461,28 @@ const PROVINCE_PORTAL = {
   '新疆':'https://kjt.xinjiang.gov.cn'
 };
 /* ====== 状态 ====== */
-let state = { current:null, tab:'overview' };
+let state = { current:null, tab:'overview', detailProv:null };
 let livePolicies = { last_updated:'', policies:[] };
 const $ = s => document.querySelector(s);
+/* ====== 从政策标题智能识别省份 ====== */
+const PROV_ALIASES = ['北京','天津','河北','山西','内蒙古','辽宁','吉林','黑龙江','上海','江苏','浙江','安徽','福建','江西','山东','河南','湖北','湖南','广东','广西','海南','重庆','四川','贵州','云南','西藏','陕西','甘肃','青海','宁夏','新疆','深圳','青岛','宁波','厦门','大连'];
+function detectProvince(title){
+  for (const p of PROV_ALIASES){
+    if (title.includes(p)) return p;
+  }
+  return null;
+}
+/* 获取某项目某省的所有政策（含标题智能识别归属） */
+function getPoliciesFor(pid, prov){
+  return livePolicies.policies.filter(x=>{
+    if (x.project !== pid) return false;
+    // 如果标题里明确写了省份，按标题归属
+    const detected = detectProvince(x.title);
+    if (detected) return detected === prov;
+    // 否则按数据里的province字段
+    return x.province === prov || x.province === '全国';
+  });
+}
 /* ====== 北京专属项目（仅北京地区可申报，不展示全国链接） ====== */
 const BEIJING_ONLY = ['bjwxnf','bjzjkr','bjxjsxcp','zgcgx'];
 PROJECTS.forEach(p=>{ p.scope = BEIJING_ONLY.includes(p.id)?'beijing':'national'; });
@@ -619,6 +638,7 @@ function renderNav(kw=''){
 }
 function selectProject(id){
   state.current = PROJECTS.find(p=>p.id===id);
+  state.detailProv = null;
   renderNav($('#searchInput').value);
   render();
 }
@@ -683,6 +703,8 @@ function overviewHtml(p){
 }
 /* ====== 政策归集（内置智能检索，按省份预置真实文件） ====== */
 function policyHtml(p){
+  // 如果在详情视图，渲染政策列表详情
+  if (state.detailProv) return policyDetailHtml(p, state.detailProv);
   const provs = getScopeProvinces(p);
   const title = p.scope==='beijing'
     ? `${p.name} · 北京地区政策归集`
@@ -693,6 +715,7 @@ function policyHtml(p){
     const portal = PROVINCE_PORTAL[prov];
     const diffText = p.diff?.[prov] || p.diff?.['default'] || '按国家统一口径执行，具体以本省当年申报通知为准。';
     const provDocs = (docData.provinces||{})[prov]||[];
+    const fresh = getPoliciesFor(p.id, prov);
     // 国家文件
     const nationalHtml = nationalDocs.map(d=>`
       <a class="doc-item" href="${d.url}" target="_blank">
@@ -708,33 +731,12 @@ function policyHtml(p){
         <div class="doc-title">【${prov}】${prov}主管部门 · ${p.name}最新申报入口 ↗</div>
         <div class="doc-point">进入${prov}省科技厅/工信厅官网，查看本年度${p.name}申报通知、材料要求与截止时间。</div>
       </a>`;
-    // 爬虫最新政策列表（分页，每页15条）
-    const fresh = livePolicies.policies.filter(x=>x.project===p.id && (x.province===prov || x.province==='全国'));
-    const PAGE_SIZE = 15;
-    const totalPages = Math.ceil(fresh.length / PAGE_SIZE) || 1;
-    // 当前页码从全局状态读
-    const pageKey = p.id + '_' + prov;
-    if (!state.policyPages) state.policyPages = {};
-    let curPage = state.policyPages[pageKey] || 1;
-    if (curPage > totalPages) curPage = totalPages;
-    const pageItems = fresh.slice((curPage-1)*PAGE_SIZE, curPage*PAGE_SIZE);
-    let freshHtml = '';
-    if (fresh.length) {
-      freshHtml = `<div style="font-size:11px;color:var(--ok);letter-spacing:1px;margin:14px 0 8px;font-weight:600">◆ 最新政策列表（共${fresh.length}条 · 每页${PAGE_SIZE}条）</div>`;
-      freshHtml += pageItems.map(x=>`
-        <a class="doc-item" href="${x.url}" target="_blank" style="border-left:3px solid var(--ok)">
-          <div class="doc-title">${x.title} ↗</div>
-          <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}</div>
-        </a>`).join('');
-      if (totalPages > 1) {
-        freshHtml += `<div style="display:flex;justify-content:center;gap:8px;margin-top:10px;align-items:center">
-          ${curPage>1?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage-1})" style="padding:4px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);cursor:pointer;font-size:12px">上一页</button>`:'<span style="font-size:12px;color:var(--text-sub)">上一页</span>'}
-          <span style="font-size:12px;color:var(--text-sub)">${curPage} / ${totalPages}</span>
-          ${curPage<totalPages?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage+1})" style="padding:4px 12px;border:1px solid var(--line);border-radius:4px;background:var(--bg);cursor:pointer;font-size:12px">下一页</button>`:'<span style="font-size:12px;color:var(--text-sub)">下一页</span>'}
-        </div>`;
-      }
-    }
     const total = nationalDocs.length + provDocs.length + fresh.length;
+    // 政策入口按钮
+    const policyBtn = fresh.length ? `<div onclick="openPolicyDetail('${prov}')" style="margin:14px 0;padding:12px 16px;background:var(--blue-soft);border:1px solid var(--blue);border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:var(--blue);font-weight:600">📋 ${prov} · 共检索到 ${fresh.length} 条相关政策</span>
+        <span style="font-size:12px;color:var(--blue)">点击查看 →</span>
+      </div>` : '';
     return `<div class="prov-card" data-prov="${prov}">
       <div class="prov-head" onclick="this.parentElement.classList.toggle('open')">
         <span class="prov-name">${prov}</span>
@@ -747,7 +749,7 @@ function policyHtml(p){
           ${nationalHtml}
           <div style="font-size:11px;color:var(--gold);letter-spacing:1px;margin:14px 0 8px;font-weight:600">◆ ${prov}本省政策文件</div>
           ${provHtml}
-          ${freshHtml}
+          ${policyBtn}
           <a class="search-link" href="${portal}" target="_blank">${prov}主管部门官网 ↗</a>
           <div class="analysis-box">
             <b>智能要点分析（${prov}口径）：</b>${diffText}
@@ -758,11 +760,49 @@ function policyHtml(p){
   }).join('');
   const tip = p.scope==='beijing'
     ? '本项目为北京地区专属政策，仅展示北京主管部门入口，其他省市无对应政策。'
-    : '点击省份卡片展开，已内置该项目的国家政策文件和该省已核验的真实文件链接。';
+    : '点击省份卡片展开，再点"查看全部政策"进入该省政策列表。';
   return `<div class="card"><div class="card-title">${title}</div>
     <div style="font-size:12px;color:var(--text-sub);margin-bottom:14px">${tip}</div>
     <div class="prov-grid">${cards}</div>
   </div>`;
+}
+/* ====== 政策详情列表（每页15条） ====== */
+function policyDetailHtml(p, prov){
+  const fresh = getPoliciesFor(p.id, prov);
+  const PAGE_SIZE = 15;
+  const totalPages = Math.ceil(fresh.length / PAGE_SIZE) || 1;
+  const pageKey = p.id + '_' + prov;
+  if (!state.policyPages) state.policyPages = {};
+  let curPage = state.policyPages[pageKey] || 1;
+  if (curPage > totalPages) curPage = totalPages;
+  const pageItems = fresh.slice((curPage-1)*PAGE_SIZE, curPage*PAGE_SIZE);
+  const listHtml = pageItems.map(x=>`
+    <a class="doc-item" href="${x.url}" target="_blank" style="border-left:3px solid var(--ok);display:block;margin-bottom:10px">
+      <div class="doc-title">${x.title} ↗</div>
+      <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}${x.found_at?(' · 抓取于'+x.found_at):''}</div>
+    </a>`).join('');
+  const pager = totalPages > 1 ? `<div style="display:flex;justify-content:center;gap:10px;margin-top:20px;align-items:center">
+    ${curPage>1?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage-1})" style="padding:6px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">上一页</button>`:'<span style="font-size:13px;color:var(--text-sub)">上一页</span>'}
+    <span style="font-size:13px;color:var(--text-sub)">第 ${curPage} / ${totalPages} 页 · 共 ${fresh.length} 条</span>
+    ${curPage<totalPages?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage+1})" style="padding:6px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">下一页</button>`:'<span style="font-size:13px;color:var(--text-sub)">下一页</span>'}
+  </div>` : `<div style="text-align:center;margin-top:16px;font-size:12px;color:var(--text-sub)">共 ${fresh.length} 条政策</div>`;
+  return `<div class="card">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <button onclick="closePolicyDetail()" style="padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">← 返回省份列表</button>
+      <div style="font-size:18px;font-weight:700">${p.name} · ${prov}政策列表</div>
+    </div>
+    <div style="font-size:12px;color:var(--text-sub);margin-bottom:16px">数据更新：${livePolicies.last_updated||'加载中'} · 共检索到 ${fresh.length} 条相关政策</div>
+    ${listHtml || '<div style="padding:40px;text-align:center;color:var(--text-sub)">暂无相关政策</div>'}
+    ${pager}
+  </div>`;
+}
+function openPolicyDetail(prov){
+  state.detailProv = prov;
+  render();
+}
+function closePolicyDetail(){
+  state.detailProv = null;
+  render();
 }
 /* ====== 差异分析 ====== */
 function diffHtml(p){
