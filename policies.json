@@ -1,6 +1,186 @@
 {
-  "last_updated": "2026-10-26 19:36",
+  "last_updated": "2026-10-27 04:16",
   "policies": [
+    {
+      "project": "gzrd",
+      "province": "辽宁",
+      "title": "关于延长高新技术企业和科技型中小企业亏损结转年限的通知",
+      "url": "https://kjt.ln.gov.cn/kjt/kjzc/gjkjzc/E73995F7C0B14CC39C5A1FEC9F5228E6/index.shtml",
+      "date": "",
+      "source": "辽宁省科技厅",
+      "found_at": "2026-10-27 04:00"
+    },
+    {
+      "project": "gzrd",
+      "province": "云南",
+      "title": "云南省2026年度高新技术企业培育库入库企业名单",
+      "url": "https://kjt.yn.gov.cn/xwdt/tzgg/202610/P020261021524325245964.et",
+      "date": "",
+      "source": "云南省科技厅",
+      "found_at": "2026-10-27 04:12"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对新疆维吾尔自治区认定机构2025年认定报备的高新技术企业进行第二批补充备...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101478/202604/33b54c2521284a56a8c4c2da39ac9037.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对宁夏回族自治区认定机构2025年认定报备的高新技术企业进行第二批补充备案...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101477/202604/fdc5bdbedeae486ca344f6d6ce929abf.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对青海省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101476/202604/08e16d9f67ff45d88494db8425af1cfb.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对甘肃省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101475/202604/6732af04ef264bc79e9060e0ce8d45f8.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对陕西省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101474/202604/a961ea501dda4419b2b4845d4ef79920.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对云南省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101472/202604/d3fb49baa44045ee8bda188d19ede15e.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对重庆市认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101469/202604/1bde9055d6de414780f837af3def6e9b.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对四川省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101470/202604/7588c17f0b86441caeb11b49257feedb.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对海南省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101468/202604/75fd94c8829049a2bfb714ea4877e2ba.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对广西壮族自治区认定机构2025年认定报备的高新技术企业进行第二批补充备案...",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101467/202604/bef99143fc8c4b5c8df216e26fb1d3dc.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对深圳市认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101466/202604/38fdeed80730432da6378ef410d71f85.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对广东省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101465/202604/c6fc12ac253b4203b9c33cafbef6e7e9.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对湖南省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101464/202604/62aa2ea2d3984bbc8fc2bd57199b50ea.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对河南省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101462/202604/c534c635787745d09863bda979810f98.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对青岛市认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101461/202604/327aa4373b2b41aa8d3c759f9c3ea910.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对山东省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101460/202604/0086377a69ae46d389ecb794af84e6cf.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对福建省认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101457/202604/5cb4696716d74c979f7345087c7922fc.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
+    {
+      "project": "gzrd",
+      "province": "全国",
+      "title": "对宁波市认定机构2025年认定报备的高新技术企业进行第二批补充备案的公告",
+      "url": "http://www.innocom.gov.cn/gqrdw/c101455/202604/c68f336ca28a4ac5bffaead29db619f8.shtml",
+      "date": "",
+      "source": "高新认定工作网",
+      "found_at": "2026-10-27 04:16"
+    },
     {
       "project": "gzrd",
       "province": "全国",
