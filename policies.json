@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-28 10:04",
+  "last_updated": "2026-10-28 22:58",
   "policies": [
     {
       "project": "kjzzx",
@@ -306,6 +306,24 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "gzrd",
+      "province": "深圳",
+      "title": "深圳市科技创新局关于发布深圳市高新技术企业联合总部大厦2026年第8批创新型产业用房租赁的公告",
+      "url": "https://stic.sz.gov.cn/xxgk/tzgg/content/post_13043609.html",
+      "date": "",
+      "source": "深圳市科创局",
+      "found_at": "2026-10-28 19:35"
+    },
+    {
+      "project": "gzrd",
+      "province": "深圳",
+      "title": "深圳市科技创新局关于发布深圳市高新技术企业联合总部大厦2026年第7批创新型产业用房扩租的公告",
+      "url": "https://stic.sz.gov.cn/xxgk/tzgg/content/post_13043597.html",
+      "date": "",
+      "source": "深圳市科创局",
+      "found_at": "2026-10-28 19:35"
     },
     {
       "project": "kjzzx",
@@ -39645,12 +39663,12 @@
   ],
   "crawl_status": {
     "深圳市科创局": "ok",
-    "青岛市科技局": "ok",
+    "青岛市科技局": "failed_home",
     "宁波市科技局": "failed_home",
     "厦门市科技局": "failed_home",
     "大连市科技局": "failed_home",
     "深圳市工信局": "ok",
-    "青岛市工信局": "ok",
+    "青岛市工信局": "failed_home",
     "宁波市经信局": "failed_home",
     "厦门市工信局": "failed_home",
     "大连市工信局": "failed_home",
@@ -39719,13 +39737,13 @@
     "新疆工信厅": "ok",
     "新疆兵团工信局": "failed_home",
     "昌平区科创平台": "failed_home",
-    "高新认定工作网": "ok",
+    "高新认定工作网": "failed_home",
     "优质中小企业平台": "ok",
-    "科技部火炬中心": "ok",
+    "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-10-28 10:04",
+  "crawl_time": "2026-10-28 22:58",
   "new_provinces": [
-    "黑龙江"
+    "深圳"
   ]
 }
