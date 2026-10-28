@@ -1,6 +1,321 @@
 {
-  "last_updated": "2026-10-27 20:50",
+  "last_updated": "2026-10-28 10:04",
   "policies": [
+    {
+      "project": "kjzzx",
+      "province": "青岛",
+      "title": "关于公示青岛市2026年第六批拟入库科技型中小企业名单的通知2026-10-27",
+      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261027_10762573.shtml",
+      "date": "2026-10-27",
+      "source": "青岛市科技局",
+      "found_at": "2026-10-27 07:23"
+    },
+    {
+      "project": "kjzzx",
+      "province": "青岛",
+      "title": "关于青岛市2026年第五批入库科技型中小企业的公告2026-10-27",
+      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261027_10762559.shtml",
+      "date": "2026-10-27",
+      "source": "青岛市科技局",
+      "found_at": "2026-10-27 07:23"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "黑龙江",
+      "title": "再创佳绩！厦门新增35家国家级专精特新“小巨人”企业2026-10-26",
+      "url": "http://gxt.hlj.gov.cn/gxt/c106954/202610/c00_31987866.shtml",
+      "date": "2026-10-26",
+      "source": "黑龙江工信厅",
+      "found_at": "2026-10-28 08:58"
+    },
+    {
+      "project": "zjtx",
+      "province": "黑龙江",
+      "title": "安徽灵璧：专精特新培育结硕果 “小巨人”领跑细分赛道2026-10-23",
+      "url": "http://gxt.hlj.gov.cn/gxt/c106954/202610/c00_31987009.shtml",
+      "date": "2026-10-23",
+      "source": "黑龙江工信厅",
+      "found_at": "2026-10-28 08:58"
+    },
+    {
+      "project": "gzrd",
+      "province": "湖北",
+      "title": "关于组织申报2026年湖北省支持高新技术企业发展专项资金的通知2026-10-19",
+      "url": "https://kjt.hubei.gov.cn/kjdt/tzgg/202610/t20261019_6035490.shtml",
+      "date": "2026-10-19",
+      "source": "湖北省科技厅",
+      "found_at": "2026-10-27 07:43"
+    },
+    {
+      "project": "gzrd",
+      "province": "湖北",
+      "title": "省财政厅 省科学技术厅关于印发《湖北省支持高新技术企业发展专项资金管理办法》的通知2026-10-19",
+      "url": "https://kjt.hubei.gov.cn/kjdt/tzgg/202610/t20261019_6035486.shtml",
+      "date": "2026-10-19",
+      "source": "湖北省科技厅",
+      "found_at": "2026-10-27 07:43"
+    },
+    {
+      "project": "kjzzx",
+      "province": "青岛",
+      "title": "关于青岛市2026年第四批入库科技型中小企业的公告2026-10-15",
+      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261015_10754364.shtml",
+      "date": "2026-10-15",
+      "source": "青岛市科技局",
+      "found_at": "2026-10-27 07:23"
+    },
+    {
+      "project": "jjsk",
+      "province": "福建",
+      "title": "研发费用加计扣除项目鉴定案例（第三辑）2026-10-15",
+      "url": "http://kjt.fj.gov.cn/jdhy/hygq/202610/t20261015_7225470.htm",
+      "date": "2026-10-15",
+      "source": "福建省科技厅",
+      "found_at": "2026-10-27 07:39"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "黑龙江",
+      "title": "甘肃细化优质中小企业梯度培育管理2026-10-13",
+      "url": "http://gxt.hlj.gov.cn/gxt/c106954/202610/c00_31983496.shtml",
+      "date": "2026-10-13",
+      "source": "黑龙江工信厅",
+      "found_at": "2026-10-28 08:58"
+    },
+    {
+      "project": "kjzzx",
+      "province": "青岛",
+      "title": "关于公示青岛市2026年第五批拟入库科技型中小企业名单的通知2026-10-10",
+      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261010_10749652.shtml",
+      "date": "2026-10-10",
+      "source": "青岛市科技局",
+      "found_at": "2026-10-27 07:23"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2026年度第一批西藏自治区创新型中小企业名单的公示2026-07-30",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3747&channelId=9&categoryId=69",
+      "date": "2026-07-30",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:31"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "西藏",
+      "title": "关于第八批专精特新“小巨人”企业拟推荐 名单的公示2026-06-15",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3733&channelId=9&categoryId=69",
+      "date": "2026-06-15",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于2026年度第一批西藏自治区专精特新中小企业名单的公告2026-04-13",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3696&channelId=9&categoryId=69",
+      "date": "2026-04-13",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于2026年度第一批西藏自治区专精特新中小企业名单的公示2026-03-31",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3671&channelId=9&categoryId=69",
+      "date": "2026-03-31",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-02-04",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3607&channelId=9&categoryId=69",
+      "date": "2026-02-04",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-02-04",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3607&channelId=9&categoryId=69",
+      "date": "2026-02-04",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-01-27",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3597&channelId=9&categoryId=69",
+      "date": "2026-01-27",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-01-27",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3597&channelId=9&categoryId=69",
+      "date": "2026-01-27",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于2025年度第二批西藏自治区创新型中小企业和专精特新中小企业名单的公示2026-01-12",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3591&channelId=9&categoryId=69",
+      "date": "2026-01-12",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2025年度第二批西藏自治区创新型中小企业和专精特新中小企业名单的公示2026-01-12",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3591&channelId=9&categoryId=69",
+      "date": "2026-01-12",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于2025年度西藏自治区创新型中小企业和专精特新中小企业名单（第一批次）的公告2025-10-29",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3556&channelId=9&categoryId=69",
+      "date": "2025-10-29",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2025年度西藏自治区创新型中小企业和专精特新中小企业名单（第一批次）的公告2025-10-29",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3556&channelId=9&categoryId=69",
+      "date": "2025-10-29",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "西藏",
+      "title": "关于西藏自治区第七批专精特新“小巨人”企业和2025年专精特新“小巨人” 复核通....2025-10-20",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3553&channelId=9&categoryId=69",
+      "date": "2025-10-20",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于2025年度第一批西藏自治区创新型中小企业和专精特新中小企业名单的公示2025-09-16",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3541&channelId=9&categoryId=69",
+      "date": "2025-09-16",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2025年度第一批西藏自治区创新型中小企业和专精特新中小企业名单的公示2025-09-16",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3541&channelId=9&categoryId=69",
+      "date": "2025-09-16",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于开展2025年度第二批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2025-08-11",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3520&channelId=9&categoryId=69",
+      "date": "2025-08-11",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于开展2025年度第二批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2025-08-11",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3520&channelId=9&categoryId=69",
+      "date": "2025-08-11",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公告2025-07-02",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3494&channelId=9&categoryId=69",
+      "date": "2025-07-02",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公告2025-07-02",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=2823&channelId=10&categoryId=132",
+      "date": "2025-07-02",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公示2025-06-18",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3480&channelId=9&categoryId=69",
+      "date": "2025-06-18",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于组织开展2025年度第一批西藏自治区专精特新中小企业申报和复核工作的通知2025-01-17",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3319&channelId=9&categoryId=69",
+      "date": "2025-01-17",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "cxxzx",
+      "province": "西藏",
+      "title": "关于开展2025年度第一批西藏自治区创新型中小企业评价工作的通知2025-01-09",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3317&channelId=9&categoryId=69",
+      "date": "2025-01-09",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "关于2024年度西藏自治区专精特新中小企业名单的公示2024-11-27",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3283&channelId=9&categoryId=69",
+      "date": "2024-11-27",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 08:32"
+    },
+    {
+      "project": "zjtx",
+      "province": "西藏",
+      "title": "财政部 工业和信息化部关于进一步支持专精特新中小企业高质量发展的通知2024-06-19",
+      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=2783&channelId=10&categoryId=132",
+      "date": "2024-06-19",
+      "source": "西藏工信厅",
+      "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "kjzzx",
+      "province": "黑龙江",
+      "title": "关于黑龙江省2026年第4批拟入库科技型中小企业名单的公示",
+      "url": "http://kjt.hlj.gov.cn/kjt/c113908/202610/c00_31982638.shtml",
+      "date": "",
+      "source": "黑龙江科技厅",
+      "found_at": "2026-10-28 07:23"
+    },
     {
       "project": "sqjszx",
       "province": "上海",
@@ -940,42 +1255,6 @@
     {
       "project": "kjzzx",
       "province": "青岛",
-      "title": "关于公示青岛市2026年第六批拟入库科技型中小企业名单的通知2026-10-27",
-      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261027_10762573.shtml",
-      "date": "2026-10-27",
-      "source": "青岛市科技局",
-      "found_at": "2026-10-27 07:23"
-    },
-    {
-      "project": "kjzzx",
-      "province": "青岛",
-      "title": "关于青岛市2026年第五批入库科技型中小企业的公告2026-10-27",
-      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261027_10762559.shtml",
-      "date": "2026-10-27",
-      "source": "青岛市科技局",
-      "found_at": "2026-10-27 07:23"
-    },
-    {
-      "project": "kjzzx",
-      "province": "青岛",
-      "title": "关于青岛市2026年第四批入库科技型中小企业的公告2026-10-15",
-      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261015_10754364.shtml",
-      "date": "2026-10-15",
-      "source": "青岛市科技局",
-      "found_at": "2026-10-27 07:23"
-    },
-    {
-      "project": "kjzzx",
-      "province": "青岛",
-      "title": "关于公示青岛市2026年第五批拟入库科技型中小企业名单的通知2026-10-10",
-      "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/t20261010_10749652.shtml",
-      "date": "2026-10-10",
-      "source": "青岛市科技局",
-      "found_at": "2026-10-27 07:23"
-    },
-    {
-      "project": "kjzzx",
-      "province": "青岛",
       "title": "附件：2026年第6批拟入库科技型中小企业名单.pdf",
       "url": "http://qdstc.qingdao.gov.cn/kjdt/tzgg/202610/P020261027533306312295.pdf",
       "date": "",
@@ -1273,15 +1552,6 @@
     {
       "project": "jjsk",
       "province": "福建",
-      "title": "研发费用加计扣除项目鉴定案例（第三辑）2026-10-15",
-      "url": "http://kjt.fj.gov.cn/jdhy/hygq/202610/t20261015_7225470.htm",
-      "date": "2026-10-15",
-      "source": "福建省科技厅",
-      "found_at": "2026-10-27 07:39"
-    },
-    {
-      "project": "jjsk",
-      "province": "福建",
       "title": "研发费用加计扣除项目鉴定案例（第三辑）",
       "url": "http://kjt.fj.gov.cn/xxgk/zcjd/qtzcwjjd/202610/t20261015_7225470.htm",
       "date": "",
@@ -1404,24 +1674,6 @@
       "date": "",
       "source": "福建省科技厅",
       "found_at": "2026-10-27 07:41"
-    },
-    {
-      "project": "gzrd",
-      "province": "湖北",
-      "title": "关于组织申报2026年湖北省支持高新技术企业发展专项资金的通知2026-10-19",
-      "url": "https://kjt.hubei.gov.cn/kjdt/tzgg/202610/t20261019_6035490.shtml",
-      "date": "2026-10-19",
-      "source": "湖北省科技厅",
-      "found_at": "2026-10-27 07:43"
-    },
-    {
-      "project": "gzrd",
-      "province": "湖北",
-      "title": "省财政厅 省科学技术厅关于印发《湖北省支持高新技术企业发展专项资金管理办法》的通知2026-10-19",
-      "url": "https://kjt.hubei.gov.cn/kjdt/tzgg/202610/t20261019_6035486.shtml",
-      "date": "2026-10-19",
-      "source": "湖北省科技厅",
-      "found_at": "2026-10-27 07:43"
     },
     {
       "project": "jshtdj",
@@ -4734,204 +4986,6 @@
       "date": "",
       "source": "云南省工信厅",
       "found_at": "2026-10-27 08:23"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2026年度第一批西藏自治区创新型中小企业名单的公示2026-07-30",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3747&channelId=9&categoryId=69",
-      "date": "2026-07-30",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:31"
-    },
-    {
-      "project": "zjtxjr",
-      "province": "西藏",
-      "title": "关于第八批专精特新“小巨人”企业拟推荐 名单的公示2026-06-15",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3733&channelId=9&categoryId=69",
-      "date": "2026-06-15",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于2026年度第一批西藏自治区专精特新中小企业名单的公告2026-04-13",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3696&channelId=9&categoryId=69",
-      "date": "2026-04-13",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于2026年度第一批西藏自治区专精特新中小企业名单的公示2026-03-31",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3671&channelId=9&categoryId=69",
-      "date": "2026-03-31",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-02-04",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3607&channelId=9&categoryId=69",
-      "date": "2026-02-04",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-02-04",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3607&channelId=9&categoryId=69",
-      "date": "2026-02-04",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-01-27",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3597&channelId=9&categoryId=69",
-      "date": "2026-01-27",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于开展2026年度第一批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2026-01-27",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3597&channelId=9&categoryId=69",
-      "date": "2026-01-27",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于2025年度第二批西藏自治区创新型中小企业和专精特新中小企业名单的公示2026-01-12",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3591&channelId=9&categoryId=69",
-      "date": "2026-01-12",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2025年度第二批西藏自治区创新型中小企业和专精特新中小企业名单的公示2026-01-12",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3591&channelId=9&categoryId=69",
-      "date": "2026-01-12",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于2025年度西藏自治区创新型中小企业和专精特新中小企业名单（第一批次）的公告2025-10-29",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3556&channelId=9&categoryId=69",
-      "date": "2025-10-29",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2025年度西藏自治区创新型中小企业和专精特新中小企业名单（第一批次）的公告2025-10-29",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3556&channelId=9&categoryId=69",
-      "date": "2025-10-29",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtxjr",
-      "province": "西藏",
-      "title": "关于西藏自治区第七批专精特新“小巨人”企业和2025年专精特新“小巨人” 复核通....2025-10-20",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3553&channelId=9&categoryId=69",
-      "date": "2025-10-20",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于2025年度第一批西藏自治区创新型中小企业和专精特新中小企业名单的公示2025-09-16",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3541&channelId=9&categoryId=69",
-      "date": "2025-09-16",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2025年度第一批西藏自治区创新型中小企业和专精特新中小企业名单的公示2025-09-16",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3541&channelId=9&categoryId=69",
-      "date": "2025-09-16",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于开展2025年度第二批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2025-08-11",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3520&channelId=9&categoryId=69",
-      "date": "2025-08-11",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于开展2025年度第二批西藏自治区创新型中小企业评价和专精特新中小企业认定工作....2025-08-11",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3520&channelId=9&categoryId=69",
-      "date": "2025-08-11",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公告2025-07-02",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3494&channelId=9&categoryId=69",
-      "date": "2025-07-02",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公示2025-06-18",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3480&channelId=9&categoryId=69",
-      "date": "2025-06-18",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于组织开展2025年度第一批西藏自治区专精特新中小企业申报和复核工作的通知2025-01-17",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3319&channelId=9&categoryId=69",
-      "date": "2025-01-17",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于开展2025年度第一批西藏自治区创新型中小企业评价工作的通知2025-01-09",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3317&channelId=9&categoryId=69",
-      "date": "2025-01-09",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "关于2024年度西藏自治区专精特新中小企业名单的公示2024-11-27",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=3283&channelId=9&categoryId=69",
-      "date": "2024-11-27",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 08:32"
     },
     {
       "project": "zjtx",
@@ -38756,24 +38810,6 @@
       "found_at": "2026-10-27 06:16"
     },
     {
-      "project": "cxxzx",
-      "province": "西藏",
-      "title": "关于2024年度第二批西藏自治区创新型中小企业名单的公告2025-07-02",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=2823&channelId=10&categoryId=132",
-      "date": "2025-07-02",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 06:22"
-    },
-    {
-      "project": "zjtx",
-      "province": "西藏",
-      "title": "财政部 工业和信息化部关于进一步支持专精特新中小企业高质量发展的通知2024-06-19",
-      "url": "http://jxt.xizang.gov.cn/xzweb/detail?id=2783&channelId=10&categoryId=132",
-      "date": "2024-06-19",
-      "source": "西藏工信厅",
-      "found_at": "2026-10-27 06:22"
-    },
-    {
       "project": "zjtx",
       "province": "新疆",
       "title": "关于开展2024年度自治区专精特新中小企业认定和2021年度自治区专精特新中小企业复核工作的通知（新工信企业〔2024〕17号）",
@@ -39606,5 +39642,90 @@
       "found_at": "2026-10-26 13:13",
       "source": "宁夏科技厅"
     }
+  ],
+  "crawl_status": {
+    "深圳市科创局": "ok",
+    "青岛市科技局": "ok",
+    "宁波市科技局": "failed_home",
+    "厦门市科技局": "failed_home",
+    "大连市科技局": "failed_home",
+    "深圳市工信局": "ok",
+    "青岛市工信局": "ok",
+    "宁波市经信局": "failed_home",
+    "厦门市工信局": "failed_home",
+    "大连市工信局": "failed_home",
+    "北京市科委": "ok",
+    "天津市科技局": "failed_home",
+    "河北省科技厅": "failed_home",
+    "山西省科技厅": "failed_home",
+    "内蒙古科技厅": "failed_home",
+    "辽宁省科技厅": "ok",
+    "吉林省科技厅": "ok",
+    "黑龙江科技厅": "ok",
+    "上海科委": "ok",
+    "江苏省科技厅": "failed_home",
+    "浙江省科技厅": "failed_home",
+    "安徽省科技厅": "failed_home",
+    "福建省科技厅": "ok",
+    "江西省科技厅": "failed_home",
+    "山东省科技厅": "ok",
+    "河南省科技厅": "failed_home",
+    "湖北省科技厅": "ok",
+    "湖南省科技厅": "failed_home",
+    "广东省科技厅": "ok",
+    "广西科技厅": "failed_home",
+    "海南省科技厅": "failed_home",
+    "重庆市科技局": "failed_home",
+    "四川省科技厅": "failed_home",
+    "贵州省科技厅": "ok",
+    "云南省科技厅": "ok",
+    "西藏科技厅": "failed_home",
+    "陕西省科技厅": "failed_home",
+    "甘肃省科技厅": "failed_home",
+    "青海省科技厅": "failed_home",
+    "宁夏科技厅": "ok",
+    "新疆科技厅": "ok",
+    "新疆兵团科技局": "ok",
+    "北京市经信局": "ok",
+    "天津市工信局": "failed_home",
+    "河北省工信厅": "failed_home",
+    "山西省工信厅": "failed_home",
+    "内蒙古工信厅": "failed_home",
+    "辽宁省工信厅": "ok",
+    "吉林省工信厅": "ok",
+    "黑龙江工信厅": "ok",
+    "上海市经信委": "ok",
+    "江苏省工信厅": "ok",
+    "浙江省经信厅": "failed_home",
+    "安徽省经信厅": "failed_home",
+    "福建省工信厅": "ok",
+    "江西省工信厅": "failed_home",
+    "山东省工信厅": "ok",
+    "河南省工信厅": "failed_home",
+    "湖北省经信厅": "ok",
+    "湖南省工信厅": "failed_home",
+    "广东省工信厅": "ok",
+    "广西工信厅": "failed_home",
+    "海南省工信厅": "failed_home",
+    "重庆市经信委": "failed_home",
+    "四川省经信厅": "failed_home",
+    "贵州省工信厅": "failed_home",
+    "云南省工信厅": "ok",
+    "西藏工信厅": "failed_home",
+    "陕西省工信厅": "failed_home",
+    "甘肃省工信厅": "failed_home",
+    "青海省工信厅": "failed_home",
+    "宁夏工信厅": "ok",
+    "新疆工信厅": "ok",
+    "新疆兵团工信局": "failed_home",
+    "昌平区科创平台": "failed_home",
+    "高新认定工作网": "ok",
+    "优质中小企业平台": "ok",
+    "科技部火炬中心": "ok",
+    "工信部中小企业局": "ok"
+  },
+  "crawl_time": "2026-10-28 10:04",
+  "new_provinces": [
+    "黑龙江"
   ]
 }
