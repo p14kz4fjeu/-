@@ -1,0 +1,36 @@
+name: 每日政策抓取
+
+on:
+  schedule:
+    # 每天两次：北京时间10:00(UTC 2:00) 和 18:00(UTC 10:00)
+    - cron: '0 2,10 * * *'
+  workflow_dispatch:  # 允许手动点击运行
+
+# 关键：授予推送代码的权限
+permissions:
+  contents: write
+
+jobs:
+  crawl:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+      - name: 运行爬虫
+        run: python spider.py
+      - name: 提交更新
+        run: |
+          git config --local user.email "bot@policy.local"
+          git config --local user.name "policy-bot"
+          git add policies.json
+          if git diff --staged --quiet; then
+            echo "没有新政策，跳过提交"
+          else
+            git commit -m "自动更新政策数据 $(date '+%Y-%m-%d %H:%M')"
+            git push
+          fi
+#（注：内容由AI生成）

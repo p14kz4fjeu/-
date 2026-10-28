@@ -29,10 +29,12 @@ PROJECT_KEYWORDS = {
     'jjsk':     ['研发费用加计扣除', '研发支出辅助账', '研发加计扣除备查', '加计扣除留存备查'],
 }
 
-SKIP_WORDS = ['党建', '人事', '预决算', '财务', '采购公告', '招标公告', '邮箱', '登录', '注册', '招聘', '意见征集', '访谈', '直播', '视频', '图解']
+SKIP_WORDS = ['党建', '人事', '预决算', '财务', '采购公告', '招标公告', '邮箱', '登录', '注册', '招聘', '意见征集', '访谈', '直播', '视频', '图解',
+              '更名', '迁址', '取消认定', '撤销', '注销', '更名名单', '迁址名单', '取消资格', '撤销资格', '资质取消', '企业更名', '异地搬迁',
+              '拟认定名单', '公示名单', '入区名单', '备案名单', '入库名单公示']
 # 扩大栏目识别：所有可能包含政策通知的栏目都抓
 COLUMN_KEYWORDS = ['通知', '公告', '政策', '文件', '高新', '公示', '政务公开', '信息公开', '申报', '认定', '政策动态', '信息公告', '信息公示', '解读', '要闻动态', '政务服务', '通知公告', '政策文件', '政策解读', '政府信息公开', '业务', '办事', '公告公示', '通知公示', '最新', '新闻', '动态', '资讯']
-MAX_PAGES_PER_COLUMN = 50
+MAX_PAGES_PER_COLUMN = 5
 UA_POOL = [
     'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
     'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
@@ -133,21 +135,44 @@ SITES = [
 # ============ 工具函数 ============
 def get_session():
     s = requests.Session()
-    s.headers.update({'User-Agent': random.choice(UA_POOL)})
+    s.headers.update({
+        'User-Agent': random.choice(UA_POOL),
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+        'Accept-Language': 'zh-CN,zh;q=0.9',
+    })
     s.verify = False
     return s
 
-def fetch(sess, url, timeout=15, retry=2):
+def fetch(sess, url, timeout=30, retry=3):
     for i in range(retry + 1):
         try:
             time.sleep(random.uniform(1, 2))
             r = sess.get(url, timeout=timeout, allow_redirects=True)
+            if r.status_code >= 400:
+                print(f'    HTTP {r.status_code}: {url[:60]}')
+                # 502/503/504 重试
+                if r.status_code in [502, 503, 504] and i < retry:
+                    time.sleep(3)
+                    continue
+                return ''
             if not r.encoding or r.encoding.lower() == 'iso-8859-1':
                 r.encoding = r.apparent_encoding or 'utf-8'
             return r.text
         except Exception as e:
-            print(f'    重试{i+1}: {url[:60]} -> {e}')
-            time.sleep(2)
+            print(f'    重试{i+1}: {url[:60]} -> {type(e).__name__}: {str(e)[:60]}')
+            time.sleep(3)
+            # 最后一次重试时尝试http/https切换
+            if i == retry and url.startswith('http://'):
+                alt = 'https://' + url[7:]
+                try:
+                    time.sleep(2)
+                    r = sess.get(alt, timeout=timeout, allow_redirects=True)
+                    if r.status_code < 400:
+                        if not r.encoding or r.encoding.lower() == 'iso-8859-1':
+                            r.encoding = r.apparent_encoding or 'utf-8'
+                        return r.text
+                except:
+                    pass
     return ''
 
 def match_projects(title):
@@ -249,8 +274,9 @@ def crawl_site(sess, site, seen_urls):
     print(f'\n[{province}] {dept}')
     home = fetch(sess, base)
     if not home:
-        print('  ❌ 首页访问失败')
+        print('  ❌ 首页访问失败（超时/被拒/网站不可达）')
         result['status'] = 'failed_home'
+        result['error'] = '首页访问失败'
         return found, result
 
     columns = find_columns(home, base)
@@ -378,8 +404,18 @@ def main():
             continue
 
     existing['policies'] = all_new + existing['policies']
+    # 按日期倒序排列（最新在前），无日期的排最后
+    def sort_key(p):
+        return p.get('date', '') or '0000-00-00'
+    existing['policies'].sort(key=sort_key, reverse=True)
     existing['policies'] = existing['policies'][:5000]
     existing['last_updated'] = datetime.now().strftime('%Y-%m-%d %H:%M')
+    # 记录本轮爬虫状态（供前端显示绿/红标识）
+    existing['crawl_status'] = {log['dept']: log['status'] for log in crawl_log}
+    existing['crawl_time'] = datetime.now().strftime('%Y-%m-%d %H:%M')
+    # 本轮新增了政策的省份
+    new_provinces = sorted(set(p['province'] for p in all_new))
+    existing['new_provinces'] = new_provinces
 
     with open(existing_path, 'w', encoding='utf-8') as f:
         json.dump(existing, f, ensure_ascii=False, indent=2)

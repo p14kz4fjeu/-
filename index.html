@@ -720,6 +720,12 @@ function policyHtml(p){
         <div class="doc-point">要点：${d.point}</div>
       </a>`).join('')}
   </div>` : '';
+  // 本轮新增政策的省份统计
+  const newProvs = livePolicies.new_provinces || [];
+  const newProvBlock = newProvs.length ? `<div class="card" style="margin-bottom:16px;padding:12px 16px;background:#f0fdf4;border:1px solid var(--ok);border-radius:8px">
+    <div style="font-size:13px;font-weight:600;color:var(--ok);margin-bottom:6px">🟢 本轮新政策省份（${newProvs.length}个）</div>
+    <div style="font-size:12px;color:var(--text-sub)">${newProvs.join('、')}</div>
+  </div>` : '';
   const cards = provs.map(prov=>{
     const portal = PROVINCE_PORTAL[prov];
     const diffText = p.diff?.[prov] || p.diff?.['default'] || '按国家统一口径执行，具体以本省当年申报通知为准。';
@@ -735,6 +741,13 @@ function policyHtml(p){
         <div class="doc-point">进入${prov}省科技厅/工信厅官网，查看本年度${p.name}申报通知、材料要求与截止时间。</div>
       </a>`;
     const total = provDocs.length + fresh.length;
+    // 爬虫状态标识：绿=成功，红=失败
+    const cs = livePolicies.crawl_status || {};
+    const provDepts = Object.keys(cs).filter(d => d.includes(prov) || cs.__prov_map?.[d]===prov);
+    const provOk = Object.entries(cs).some(([dept,st]) => (dept.includes(prov)) && st==='ok');
+    const crawlDot = Object.keys(cs).length
+      ? `<span title="爬虫状态：${provOk?'本轮爬取成功':'本轮爬取失败'}" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:${provOk?'var(--ok)':'var(--danger)'};margin-left:4px"></span>`
+      : '';
     // 政策入口按钮
     const policyBtn = fresh.length ? `<div onclick="openPolicyDetail('${prov}')" style="margin:14px 0;padding:12px 16px;background:var(--blue-soft);border:1px solid var(--blue);border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;align-items:center">
         <span style="font-size:13px;color:var(--blue);font-weight:600">📋 ${prov} · 共检索到 ${fresh.length} 条相关政策</span>
@@ -742,7 +755,7 @@ function policyHtml(p){
       </div>` : '';
     return `<div class="prov-card" data-prov="${prov}">
       <div class="prov-head" onclick="this.parentElement.classList.toggle('open')">
-        <span class="prov-name">${prov}</span>
+        <span class="prov-name">${prov}${crawlDot}</span>
         <span class="prov-status">● ${total} 份政策</span>
         <span class="prov-arrow">▶</span>
       </div>
@@ -765,13 +778,14 @@ function policyHtml(p){
   return `<div class="card"><div class="card-title">${title}</div>
     <div style="font-size:12px;color:var(--text-sub);margin-bottom:14px">${tip}</div>
     ${nationalBlock}
+    ${newProvBlock}
     <div class="prov-grid">${cards}</div>
   </div>`;
 }
-/* ====== 政策详情列表（每页15条） ====== */
+/* ====== 政策详情列表（每页22条） ====== */
 function policyDetailHtml(p, prov){
   const fresh = getPoliciesFor(p.id, prov);
-  const PAGE_SIZE = 15;
+  const PAGE_SIZE = 22;
   const totalPages = Math.ceil(fresh.length / PAGE_SIZE) || 1;
   const pageKey = p.id + '_' + prov;
   if (!state.policyPages) state.policyPages = {};
@@ -783,10 +797,13 @@ function policyDetailHtml(p, prov){
       <div class="doc-title">${x.title} ↗</div>
       <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}${x.found_at?(' · 抓取于'+x.found_at):''}</div>
     </a>`).join('');
-  const pager = totalPages > 1 ? `<div style="display:flex;justify-content:center;gap:10px;margin-top:20px;align-items:center">
+  const pager = totalPages > 1 ? `<div style="display:flex;justify-content:center;gap:10px;margin-top:20px;align-items:center;flex-wrap:wrap">
     ${curPage>1?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage-1})" style="padding:6px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">上一页</button>`:'<span style="font-size:13px;color:var(--text-sub)">上一页</span>'}
     <span style="font-size:13px;color:var(--text-sub)">第 ${curPage} / ${totalPages} 页 · 共 ${fresh.length} 条</span>
     ${curPage<totalPages?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage+1})" style="padding:6px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">下一页</button>`:'<span style="font-size:13px;color:var(--text-sub)">下一页</span>'}
+    <span style="font-size:13px;color:var(--text-sub)">跳至</span>
+    <input id="pageJump_${p.id}_${prov}" type="number" min="1" max="${totalPages}" value="${curPage}" style="width:50px;padding:4px 6px;border:1px solid var(--line);border-radius:4px;font-size:13px;text-align:center">
+    <button onclick="jumpToPage('${p.id}','${prov}')" style="padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">GO</button>
   </div>` : `<div style="text-align:center;margin-top:16px;font-size:12px;color:var(--text-sub)">共 ${fresh.length} 条政策</div>`;
   return `<div class="card">
     <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
@@ -805,6 +822,13 @@ function openPolicyDetail(prov){
 function closePolicyDetail(){
   state.detailProv = null;
   render();
+}
+function jumpToPage(pid, prov){
+  const input = document.getElementById('pageJump_'+pid+'_'+prov);
+  const num = parseInt(input.value);
+  if(num && num > 0){
+    switchPolicyPage(pid, prov, num);
+  }
 }
 /* ====== 差异分析 ====== */
 function diffHtml(p){
