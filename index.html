@@ -473,15 +473,32 @@ function detectProvince(title){
   return null;
 }
 /* 获取某项目某省的所有政策（含标题智能识别归属） */
+function getDeletedUrls(){
+  try { return JSON.parse(localStorage.getItem('deleted_policies')||'[]'); } catch(e){ return []; }
+}
+function addDeletedUrl(url){
+  const arr = getDeletedUrls();
+  if(!arr.includes(url)){ arr.push(url); localStorage.setItem('deleted_policies', JSON.stringify(arr)); }
+}
+function getCustomPolicies(){
+  try { return JSON.parse(localStorage.getItem('custom_policies')||'[]'); } catch(e){ return []; }
+}
+function addCustomPolicy(item){
+  const arr = getCustomPolicies();
+  arr.push(item);
+  localStorage.setItem('custom_policies', JSON.stringify(arr));
+}
 function getPoliciesFor(pid, prov){
-  return livePolicies.policies.filter(x=>{
+  const deleted = getDeletedUrls();
+  const customs = getCustomPolicies().filter(x=>x.project===pid && x.province===prov);
+  const crawled = livePolicies.policies.filter(x=>{
     if (x.project !== pid) return false;
-    // 如果标题里明确写了省份，按标题归属
+    if (deleted.includes(x.url)) return false;
     const detected = detectProvince(x.title);
     if (detected) return detected === prov;
-    // 否则按数据里的province字段
     return x.province === prov || x.province === '全国';
   });
+  return customs.concat(crawled);
 }
 /* ====== 北京专属项目（仅北京地区可申报，不展示全国链接） ====== */
 const BEIJING_ONLY = ['bjwxnf','bjzjkr','bjxjsxcp','zgcgx'];
@@ -793,10 +810,13 @@ function policyDetailHtml(p, prov){
   if (curPage > totalPages) curPage = totalPages;
   const pageItems = fresh.slice((curPage-1)*PAGE_SIZE, curPage*PAGE_SIZE);
   const listHtml = pageItems.map(x=>`
-    <a class="doc-item" href="${x.url}" target="_blank" style="border-left:3px solid var(--ok);display:block;margin-bottom:10px">
-      <div class="doc-title">${x.title} ↗</div>
-      <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}${x.found_at?(' · 抓取于'+x.found_at):''}</div>
-    </a>`).join('');
+    <div class="doc-item" style="border-left:3px solid var(--ok);display:block;margin-bottom:10px;position:relative">
+      <a href="${x.url}" target="_blank" style="display:block">
+        <div class="doc-title">${x.title} ↗</div>
+        <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}${x.found_at?(' · 抓取于'+x.found_at):''}</div>
+      </a>
+      <button onclick="deletePolicy('${x.url.replace(/'/g,"\\'")}','${p.id}','${prov}')" title="删除此条" style="position:absolute;top:6px;right:8px;background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px">✕</button>
+    </div>`).join('');
   const pager = totalPages > 1 ? `<div style="display:flex;justify-content:center;gap:10px;margin-top:20px;align-items:center;flex-wrap:wrap">
     ${curPage>1?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage-1})" style="padding:6px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">上一页</button>`:'<span style="font-size:13px;color:var(--text-sub)">上一页</span>'}
     <span style="font-size:13px;color:var(--text-sub)">第 ${curPage} / ${totalPages} 页 · 共 ${fresh.length} 条</span>
@@ -806,9 +826,10 @@ function policyDetailHtml(p, prov){
     <button onclick="jumpToPage('${p.id}','${prov}')" style="padding:6px 12px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">GO</button>
   </div>` : `<div style="text-align:center;margin-top:16px;font-size:12px;color:var(--text-sub)">共 ${fresh.length} 条政策</div>`;
   return `<div class="card">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap">
       <button onclick="closePolicyDetail()" style="padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">← 返回省份列表</button>
       <div style="font-size:18px;font-weight:700">${p.name} · ${prov}政策列表</div>
+      <button onclick="addPolicyManually('${p.id}','${prov}')" style="margin-left:auto;padding:6px 14px;border:1px solid var(--ok);border-radius:6px;background:#f0fdf4;cursor:pointer;font-size:13px;color:var(--ok)">+ 添加政策</button>
     </div>
     <div style="font-size:12px;color:var(--text-sub);margin-bottom:16px">数据更新：${livePolicies.last_updated||'加载中'} · 共检索到 ${fresh.length} 条相关政策</div>
     ${listHtml || '<div style="padding:40px;text-align:center;color:var(--text-sub)">暂无相关政策</div>'}
@@ -829,6 +850,20 @@ function jumpToPage(pid, prov){
   if(num && num > 0){
     switchPolicyPage(pid, prov, num);
   }
+}
+function deletePolicy(url, pid, prov){
+  if(confirm('确定删除这条政策吗？删除后下次打开仍不显示。')){
+    addDeletedUrl(url);
+    render();
+  }
+}
+function addPolicyManually(pid, prov){
+  const title = prompt('请输入政策标题：');
+  if(!title) return;
+  const url = prompt('请输入政策链接URL：');
+  if(!url) return;
+  addCustomPolicy({project:pid, province:prov, title, url, date:'', source:'手动添加', found_at:new Date().toLocaleString('zh-CN')});
+  render();
 }
 /* ====== 差异分析 ====== */
 function diffHtml(p){
