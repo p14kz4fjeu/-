@@ -810,12 +810,14 @@ function policyDetailHtml(p, prov){
   if (curPage > totalPages) curPage = totalPages;
   const pageItems = fresh.slice((curPage-1)*PAGE_SIZE, curPage*PAGE_SIZE);
   const listHtml = pageItems.map(x=>`
-    <div class="doc-item" style="border-left:3px solid var(--ok);display:block;margin-bottom:10px;position:relative">
-      <a href="${x.url}" target="_blank" style="display:block">
-        <div class="doc-title">${x.title} ↗</div>
-        <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}${x.found_at?(' · 抓取于'+x.found_at):''}</div>
+    <div class="doc-item" style="border-left:3px solid var(--ok);display:block;margin-bottom:10px;position:relative;display:flex;align-items:flex-start;gap:8px;padding:10px 12px">
+      <input type="checkbox" class="policy-check" value="${x.url.replace(/"/g,'&quot;')}" style="margin-top:4px;flex-shrink:0;width:16px;height:16px;cursor:pointer">
+      <a href="${x.url}" target="_blank" style="display:flex:1;flex:1">
+        <div>
+          <div class="doc-title">${x.title} ↗</div>
+          <div class="doc-point">${x.date?('发布：'+x.date+' · '):''}来源：${x.source}${x.found_at?(' · 抓取于'+x.found_at):''}</div>
+        </div>
       </a>
-      <button onclick="deletePolicy('${x.url.replace(/'/g,"\\'")}','${p.id}','${prov}')" title="删除此条" style="position:absolute;top:6px;right:8px;background:none;border:none;color:var(--danger);cursor:pointer;font-size:14px;padding:2px 6px;border-radius:4px">✕</button>
     </div>`).join('');
   const pager = totalPages > 1 ? `<div style="display:flex;justify-content:center;gap:10px;margin-top:20px;align-items:center;flex-wrap:wrap">
     ${curPage>1?`<button onclick="switchPolicyPage('${p.id}','${prov}',${curPage-1})" style="padding:6px 16px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">上一页</button>`:'<span style="font-size:13px;color:var(--text-sub)">上一页</span>'}
@@ -830,6 +832,8 @@ function policyDetailHtml(p, prov){
       <button onclick="closePolicyDetail()" style="padding:6px 14px;border:1px solid var(--line);border-radius:6px;background:var(--bg);cursor:pointer;font-size:13px">← 返回省份列表</button>
       <div style="font-size:18px;font-weight:700">${p.name} · ${prov}政策列表</div>
       <button onclick="addPolicyManually('${p.id}','${prov}')" style="margin-left:auto;padding:6px 14px;border:1px solid var(--ok);border-radius:6px;background:#f0fdf4;cursor:pointer;font-size:13px;color:var(--ok)">+ 添加政策</button>
+      <label style="font-size:13px;display:flex;align-items:center;gap:4px;cursor:pointer"><input type="checkbox" onclick="toggleAllChecks(this)" style="width:15px;height:15px;cursor:pointer"> 全选</label>
+      <button onclick="batchDelete('${p.id}','${prov}')" style="padding:6px 14px;border:1px solid var(--danger);border-radius:6px;background:#fef2f2;cursor:pointer;font-size:13px;color:var(--danger)">🗑 批量删除</button>
     </div>
     <div style="font-size:12px;color:var(--text-sub);margin-bottom:16px">数据更新：${livePolicies.last_updated||'加载中'} · 共检索到 ${fresh.length} 条相关政策</div>
     ${listHtml || '<div style="padding:40px;text-align:center;color:var(--text-sub)">暂无相关政策</div>'}
@@ -868,6 +872,23 @@ function addPolicyManually(pid, prov){
   const url = prompt('请输入政策链接URL：');
   if(!url) return;
   addCustomPolicy({project:pid, province:prov, title, url, date:'', source:'手动添加', found_at:new Date().toLocaleString('zh-CN')});
+  render();
+}
+function toggleAllChecks(checkbox){
+  document.querySelectorAll('.policy-check').forEach(cb => cb.checked = checkbox.checked);
+}
+function batchDelete(pid, prov){
+  const checked = document.querySelectorAll('.policy-check:checked');
+  if(checked.length === 0){ alert('请先勾选要删除的政策'); return; }
+  if(!confirm(`确定删除选中的 ${checked.length} 条政策吗？`)) return;
+  const urls = Array.from(checked).map(cb => cb.value);
+  // 手动添加的从custom里移除
+  const customs = getCustomPolicies().filter(x => !urls.includes(x.url));
+  localStorage.setItem('custom_policies', JSON.stringify(customs));
+  // 爬虫数据加入删除列表
+  const deleted = getDeletedUrls();
+  urls.forEach(u => { if(!deleted.includes(u)) deleted.push(u); });
+  localStorage.setItem('deleted_policies', JSON.stringify(deleted));
   render();
 }
 /* ====== 差异分析 ====== */
