@@ -853,6 +853,11 @@ function jumpToPage(pid, prov){
 }
 function deletePolicy(url, pid, prov){
   if(confirm('确定删除这条政策吗？删除后下次打开仍不显示。')){
+    // 如果是手动添加的，从custom_policies里移除
+    const customs = getCustomPolicies();
+    const filtered = customs.filter(x=>x.url !== url);
+    localStorage.setItem('custom_policies', JSON.stringify(filtered));
+    // 爬虫数据加到deleted列表
     addDeletedUrl(url);
     render();
   }
