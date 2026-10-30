@@ -1,6 +1,15 @@
 {
-  "last_updated": "2026-10-29 23:03",
+  "last_updated": "2026-10-30 22:56",
   "policies": [
+    {
+      "project": "rjcp",
+      "province": "黑龙江",
+      "title": "关于开展2026年首版次软件申报工作的通知2026-10-30",
+      "url": "http://gxt.hlj.gov.cn/gxt/c106958/202610/c00_31989824.shtml",
+      "date": "2026-10-30",
+      "source": "黑龙江工信厅",
+      "found_at": "2026-10-30 21:52"
+    },
     {
       "project": "zjtxjr",
       "province": "黑龙江",
@@ -315,6 +324,15 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "gzrd",
+      "province": "贵州",
+      "title": "省高新技术企业认定管理机构办公室关于组织开展2026年第二批高新技术企业申报的\n　　通知",
+      "url": "http://kjt.guizhou.gov.cn/xwzx/tzgg_73876/202610/t20261030_91056931.html",
+      "date": "",
+      "source": "贵州省科技厅",
+      "found_at": "2026-10-30 21:13"
     },
     {
       "project": "rjcp",
@@ -39850,14 +39868,8 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-10-29 23:03",
+  "crawl_time": "2026-10-30 22:56",
   "new_provinces": [
-    "云南",
-    "吉林",
-    "山东",
-    "广东",
-    "新疆",
-    "深圳",
     "贵州",
     "黑龙江"
   ]
