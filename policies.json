@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-30 22:56",
+  "last_updated": "2026-10-31 22:49",
   "policies": [
     {
       "project": "rjcp",
@@ -39868,9 +39868,6 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-10-30 22:56",
-  "new_provinces": [
-    "贵州",
-    "黑龙江"
-  ]
+  "crawl_time": "2026-10-31 22:49",
+  "new_provinces": []
 }
