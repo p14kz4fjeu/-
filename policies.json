@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-01 22:51",
+  "last_updated": "2026-11-02 23:03",
   "policies": [
     {
       "project": "rjcp",
@@ -324,6 +324,60 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "bjxjsxcp",
+      "province": "北京",
+      "title": "一周园区要闻盘点丨北京石墨烯论坛举办；北京市新技术新产品新服务医药健康领域供需对接专场活动举办",
+      "url": "https://kw.beijing.gov.cn/xwdt/bmdt/202611/t20261102_4928692.html",
+      "date": "",
+      "source": "北京市科委",
+      "found_at": "2026-11-02 20:01"
+    },
+    {
+      "project": "kjzzx",
+      "province": "吉林",
+      "title": "吉林省2026年第五批拟入库科技型中小企业名单公示",
+      "url": "http://kjt.jl.gov.cn/xwzx/tzgg/202611/t20261102_3683660.html",
+      "date": "",
+      "source": "吉林省科技厅",
+      "found_at": "2026-11-02 20:10"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "关于上海市2026年第九批拟入库科技型中小企业名单的公示",
+      "url": "https://stcsm.sh.gov.cn/zwgk/tzgs/gsgg/zhgsgg/20261102/b1a343e95a414ffdb34973bfaed21d2a.html",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-02 20:50"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "关于上海市2026年第七批入库科技型中小企业的公告",
+      "url": "https://stcsm.sh.gov.cn/zwgk/tzgs/gsgg/zhgsgg/20261102/54194a525b0843f698e43c8a4650d529.html",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-02 20:50"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "上海市2026年第九批拟入库科技型中小企业名单.pdf",
+      "url": "https://stcsm.sh.gov.cn/cmsres/27/27fb5caf0d4240f2a35e17a0062f2e98/8f6c9d1f14ed7d991c750bbd2cc9b060.pdf",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-02 20:50"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "上海市2026年第七批入库科技型中小企业名单.pdf",
+      "url": "https://stcsm.sh.gov.cn/cmsres/67/67f24aa58eff499f9b7064f567bc367f/385f486cdb979f3d36ebc869b1f6b425.pdf",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-02 20:50"
     },
     {
       "project": "gzrd",
@@ -39793,7 +39847,7 @@
     "宁波市科技局": "failed_home",
     "厦门市科技局": "failed_home",
     "大连市科技局": "failed_home",
-    "深圳市工信局": "ok",
+    "深圳市工信局": "failed_home",
     "青岛市工信局": "failed_home",
     "宁波市经信局": "failed_home",
     "厦门市工信局": "failed_home",
@@ -39868,6 +39922,10 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-01 22:51",
-  "new_provinces": []
+  "crawl_time": "2026-11-02 23:03",
+  "new_provinces": [
+    "上海",
+    "北京",
+    "吉林"
+  ]
 }
