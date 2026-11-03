@@ -1,6 +1,15 @@
 {
-  "last_updated": "2026-11-02 23:03",
+  "last_updated": "2026-11-03 22:59",
   "policies": [
+    {
+      "project": "zjtxjr",
+      "province": "黑龙江",
+      "title": "喜报！内蒙古新认定11家专精特新“小巨人”企业，包头独占6席，位列内蒙古第一2026-11-03",
+      "url": "http://gxt.hlj.gov.cn/gxt/c106954/202611/c00_31990752.shtml",
+      "date": "2026-11-03",
+      "source": "黑龙江工信厅",
+      "found_at": "2026-11-03 21:50"
+    },
     {
       "project": "rjcp",
       "province": "黑龙江",
@@ -39922,10 +39931,8 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-02 23:03",
+  "crawl_time": "2026-11-03 22:59",
   "new_provinces": [
-    "上海",
-    "北京",
-    "吉林"
+    "黑龙江"
   ]
 }
