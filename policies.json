@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-03 22:59",
+  "last_updated": "2026-11-04 23:06",
   "policies": [
     {
       "project": "zjtxjr",
@@ -333,6 +333,60 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "kjzzx",
+      "province": "北京",
+      "title": "关于北京市2026年第四批拟入库科技型中小企业名单的公示",
+      "url": "https://kw.beijing.gov.cn/zwgk/tzgg/202611/t20261104_4932059.html",
+      "date": "",
+      "source": "北京市科委",
+      "found_at": "2026-11-04 20:03"
+    },
+    {
+      "project": "kjzzx",
+      "province": "北京",
+      "title": "附件：北京市2026年第四批拟入库科技型中小企业名单",
+      "url": "https://kw.beijing.gov.cn/zwgk/tzgg/202611/P020261104509765802081.pdf",
+      "date": "",
+      "source": "北京市科委",
+      "found_at": "2026-11-04 20:03"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "关于上海市2026年第六批入库科技型中小企业的公告",
+      "url": "https://stcsm.sh.gov.cn/zwgk/tzgs/gsgg/zhgsgg/20261104/4ed90c3b912d42599c6c930f6d4363a8.html",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-04 20:51"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "上海市2026年第六批入库科技型中小企业名单.pdf",
+      "url": "https://stcsm.sh.gov.cn/cmsres/ca/caf1981d3c6a4534ac0f6f96c4cb1329/72bc85dd3ca0bd0832f718216cf7df96.pdf",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-04 20:51"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "北京",
+      "title": "北京市经济和信息化局关于对第一轮第三批第三年国家专精特新“小巨人”企业高质量发展资金拟支持项目进行公示的通知",
+      "url": "https://jxj.beijing.gov.cn/jxdt/tzgg/202611/t20261104_4932709.html",
+      "date": "",
+      "source": "北京市经信局",
+      "found_at": "2026-11-04 21:33"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "北京",
+      "title": "第一轮第三批第三年国家专精特新“小巨人”企业高质量发展资金拟支持项目汇总表",
+      "url": "https://jxj.beijing.gov.cn/jxdt/tzgg/202611/P020261104698136395816.wps",
+      "date": "",
+      "source": "北京市经信局",
+      "found_at": "2026-11-04 21:33"
     },
     {
       "project": "bjxjsxcp",
@@ -39851,7 +39905,7 @@
     }
   ],
   "crawl_status": {
-    "深圳市科创局": "ok",
+    "深圳市科创局": "failed_home",
     "青岛市科技局": "failed_home",
     "宁波市科技局": "failed_home",
     "厦门市科技局": "failed_home",
@@ -39931,8 +39985,9 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-03 22:59",
+  "crawl_time": "2026-11-04 23:06",
   "new_provinces": [
-    "黑龙江"
+    "上海",
+    "北京"
   ]
 }
