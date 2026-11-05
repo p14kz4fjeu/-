@@ -1,6 +1,15 @@
 {
-  "last_updated": "2026-11-04 23:06",
+  "last_updated": "2026-11-05 23:11",
   "policies": [
+    {
+      "project": "zjtxjr",
+      "province": "黑龙江",
+      "title": "四川新增80家国家级专精特新“小巨人”企业2026-11-05",
+      "url": "http://gxt.hlj.gov.cn/gxt/c106954/202611/c00_31991624.shtml",
+      "date": "2026-11-05",
+      "source": "黑龙江工信厅",
+      "found_at": "2026-11-05 21:55"
+    },
     {
       "project": "zjtxjr",
       "province": "黑龙江",
@@ -333,6 +342,24 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "kjzzx",
+      "province": "云南",
+      "title": "云南省科技厅关于2026年第2批入库科技型中小企业名单的公告",
+      "url": "https://kjt.yn.gov.cn/xwdt/tzgg/202611/t20261105_4381065.html",
+      "date": "",
+      "source": "云南省科技厅",
+      "found_at": "2026-11-05 21:21"
+    },
+    {
+      "project": "kjzzx",
+      "province": "云南",
+      "title": "云南省2026年第2批入库科技型中小企业名单",
+      "url": "https://kjt.yn.gov.cn/xwdt/tzgg/202611/P020261105601242677882.xlsx",
+      "date": "",
+      "source": "云南省科技厅",
+      "found_at": "2026-11-05 21:21"
     },
     {
       "project": "kjzzx",
@@ -39985,9 +40012,9 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-04 23:06",
+  "crawl_time": "2026-11-05 23:11",
   "new_provinces": [
-    "上海",
-    "北京"
+    "云南",
+    "黑龙江"
   ]
 }
