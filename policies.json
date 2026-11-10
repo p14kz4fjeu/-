@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-09 23:02",
+  "last_updated": "2026-11-10 22:56",
   "policies": [
     {
       "project": "zjtxjr",
@@ -342,6 +342,33 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "cxxzx",
+      "province": "北京",
+      "title": "北京市经济和信息化局关于对2026年度第十一批北京市创新型中小企业名单进行公告的通知",
+      "url": "https://jxj.beijing.gov.cn/jxdt/tzgg/202611/t20261110_4940228.html",
+      "date": "",
+      "source": "北京市经信局",
+      "found_at": "2026-11-10 21:26"
+    },
+    {
+      "project": "cxxzx",
+      "province": "北京",
+      "title": "附件：2026年度第十一批北京市创新型中小企业名单",
+      "url": "https://jxj.beijing.gov.cn/jxdt/tzgg/202611/P020261110518949742765.docx",
+      "date": "",
+      "source": "北京市经信局",
+      "found_at": "2026-11-10 21:26"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "湖北",
+      "title": "国家级专精特新“小巨人” 将在汉新建生产基地102026-11",
+      "url": "http://jxt.hubei.gov.cn/bmdt/rdjj/202611/t20261110_6082936.shtml",
+      "date": "",
+      "source": "湖北省经信厅",
+      "found_at": "2026-11-10 22:24"
     },
     {
       "project": "kjzzx",
@@ -40021,8 +40048,9 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-09 23:02",
+  "crawl_time": "2026-11-10 22:56",
   "new_provinces": [
-    "福建"
+    "北京",
+    "湖北"
   ]
 }
