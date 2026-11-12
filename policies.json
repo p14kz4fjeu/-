@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-11 23:05",
+  "last_updated": "2026-11-12 23:01",
   "policies": [
     {
       "project": "zjtxjr",
@@ -342,6 +342,42 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "kjzzx",
+      "province": "广东",
+      "title": "广东省科学技术厅关于广东省2026年第四批入库科技型中小企业的公告",
+      "url": "https://gdstc.gd.gov.cn/zwgk_n/tzgg/content/post_4979638.html",
+      "date": "",
+      "source": "广东省科技厅",
+      "found_at": "2026-11-12 21:00"
+    },
+    {
+      "project": "kjzzx",
+      "province": "广东",
+      "title": "广东省2026年第4批入库科技型中小企业名单",
+      "url": "https://gdstc.gd.gov.cn/attachment/0/629/629757/4979638.pdf",
+      "date": "",
+      "source": "广东省科技厅",
+      "found_at": "2026-11-12 21:01"
+    },
+    {
+      "project": "zjtx",
+      "province": "湖北",
+      "title": "全省专精特新中小企业赋能项目走进北交所122026-11",
+      "url": "http://jxt.hubei.gov.cn/bmdt/gzdt/202611/t20261112_6083937.shtml",
+      "date": "",
+      "source": "湖北省经信厅",
+      "found_at": "2026-11-12 22:28"
+    },
+    {
+      "project": "zjtxjr",
+      "province": "广东",
+      "title": "关于举办2026年专精特新“小巨人”企业高级经营管理人才研修班（第三至五期）的通知",
+      "url": "https://gdii.gd.gov.cn/zwgk/tzgg1011/content/post_4979667.html",
+      "date": "",
+      "source": "广东省工信厅",
+      "found_at": "2026-11-12 22:29"
     },
     {
       "project": "cxxzx",
@@ -40048,6 +40084,9 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-11 23:05",
-  "new_provinces": []
+  "crawl_time": "2026-11-12 23:01",
+  "new_provinces": [
+    "广东",
+    "湖北"
+  ]
 }
