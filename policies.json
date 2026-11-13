@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12 23:01",
+  "last_updated": "2026-11-13 23:02",
   "policies": [
     {
       "project": "zjtxjr",
@@ -342,6 +342,33 @@
       "date": "2024-06-19",
       "source": "西藏工信厅",
       "found_at": "2026-10-27 06:22"
+    },
+    {
+      "project": "kjzzx",
+      "province": "上海",
+      "title": "关于上海市2026年第十批拟入库科技型中小企业名单的公示",
+      "url": "https://stcsm.sh.gov.cn/zwgk/tzgs/gsgg/zhgsgg/20261113/c3d3645cdef441deb34f4692579e7415.html",
+      "date": "",
+      "source": "上海科委",
+      "found_at": "2026-11-13 20:48"
+    },
+    {
+      "project": "kjzzx",
+      "province": "新疆",
+      "title": "关于自治区2026年第五批入库科技型中小企业名单的公告",
+      "url": "https://kjt.xinjiang.gov.cn/kjt/c100264/202611/b667a4e051be46868b3943030a38d37a.shtml",
+      "date": "",
+      "source": "新疆科技厅",
+      "found_at": "2026-11-13 21:29"
+    },
+    {
+      "project": "cxxzx",
+      "province": "福建",
+      "title": "福建省工业和信息化厅关于公布创新型中小企业复核结果和取消部分创新型中小企业认定的通知",
+      "url": "http://gxt.fujian.gov.cn/zwgk/zfxxgk/fdzdgknr/gzdt/202611/t20261113_7249106.htm",
+      "date": "",
+      "source": "福建省工信厅",
+      "found_at": "2026-11-13 22:19"
     },
     {
       "project": "kjzzx",
@@ -40084,9 +40111,10 @@
     "科技部火炬中心": "failed_home",
     "工信部中小企业局": "ok"
   },
-  "crawl_time": "2026-11-12 23:01",
+  "crawl_time": "2026-11-13 23:02",
   "new_provinces": [
-    "广东",
-    "湖北"
+    "上海",
+    "新疆",
+    "福建"
   ]
 }
